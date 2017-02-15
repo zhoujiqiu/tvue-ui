@@ -1,0 +1,33 @@
+@import "./common/var.css";
+@import "./mixins/line.css";
+
+.m-cell {
+  position: relative;
+  background-color: var(--color-white);
+  height: var(--cell-height);
+  line-height: var(--cell-height);
+  padding: var(--cell-padding-tb) var(--cell-padding-lr);
+  display: flex;
+  justify-content: space-between;
+  font-size:20px;
+  &:first-child {
+    @mixin borderTop var(--color-border-cell);
+  }
+  &:last-child {
+    @mixin borderBottom var(--color-border-cell);
+  }
+  &:not(:first-child) {
+    @mixin borderTop var(--color-border-cell);
+    &:before {
+      left: var(--cell-topline-left);
+    }
+  }
+}
+.m-cell__left .iconfont {
+  font-size: var(--cell-icon-font-size);
+  padding-right: var(--cell-icon-padding-right);
+  display: block;
+}
+.m-cell__center {
+  flex-grow: 1;
+}

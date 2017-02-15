@@ -1,0 +1,63 @@
+:root {
+
+  /*color*/
+  --color-red: #f00;
+  --color-white: #fff;
+  --color-success: #E25241;
+  --color-primary: #59B6EF;
+  --color-cancel: #888;
+  --color-border-cell: #d9d9d9;
+  --color-modal: rgba(0,0,0,0.4);
+  /*z-index*/
+  --z-index-border: 1;
+  --z-index-modal: 20;
+  --z-index-alert: 30;
+  /*button*/
+
+  --button-large-width: 100%;
+  --button-large-height: 50px;
+  --button-submit-backgroundcolor: #3395ff;
+  --button-default-color: #fff;
+  --button-large-border-radius: 4px;
+
+  /*cell*/
+  --cell-height: 60px;
+  --cell-topline-left: 30px;
+  --cell-padding-lr: 30px;
+  --cell-padding-tb: 0px;
+  --cell-icon-font-size: 32px;
+  --cell-icon-padding-right: 20px;
+  /*input*/
+  --input-ft-gray: #ccc;
+  --input-height: 100%;
+  --input-font-size: 32px;
+  --input-text-indent: 20px;
+  /*group*/
+  --group-title-left: 30px;
+  --group-title-color: #888;
+  --group-font-size: 32px;
+  /*alert*/
+  --alert-width: 88%;
+  --alert-padding: 20px;
+  /*switch*/
+  --switch-width: 100px;
+  --switch-height: 56px;
+  --switch-offsetx: 42px;
+  --switch-bgc: #dfdfdf;
+  --switch-before-width: 96px;
+  --switch-before-height: 52px;
+  --switch-pseudo-bgc: #fff;
+  --switch-checked-bgc: #56ba37;
+  /*card*/
+  --card-header-padding: 28px 30px;
+  --card-bb-color: #aaa;
+  --card-body-padding: 30px;
+  --card-width: 80%;
+  --card-bgc: #fff;
+  /*tab*/
+  --tab-item-bgc: #fff;
+  --tab-line-bgc:  #aaa;
+  --tab-line-height: 4px;
+  --tab-line-select-color: #56ba37;
+  --tab-item-bb: 1px solid #aaa;
+}

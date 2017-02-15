@@ -1,0 +1,33 @@
+@import "./common/var.css";
+@import "./mixins/_button.css";
+
+.m-button {
+  margin: 10px auto;
+  height: var(--button-large-height);
+  background-color: #fff;
+  position: relative;
+  width: var(--button-large-width);
+  border: none;
+  text-align: center;
+  border-radius: var(--button-large-border-radius);
+  outline: none;
+  font-size: 18px;
+}
+.m-button--plain--success {
+  @mixin button-style--plain var(--color-success);
+}
+.m-button--plain--primary {
+  @mixin button-style--plain var(--color-primary);
+}
+.m-button--plain--cancel {
+  @mixin button-style--plain var(--color-cancel);
+}
+.m-button--success {
+  @mixin button-style var(--color-success);
+}
+.m-button--primary {
+  @mixin button-style var(--color-primary);
+}
+.m-button--cancel {
+  @mixin button-style var(--color-cancel);
+}
