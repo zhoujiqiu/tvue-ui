@@ -1,52 +1,97 @@
 <template>
-     <div class="tui-toast" v-if="toastIsHidden">
-     <p class="tui-toast__content">{{content}}</p></div>
- </template>
- <script>
-  export default {
-    props: ['content'],
-    data () {
-      return {
-        toastIsHidden: true,
-        content: '提示信息'
+  <transition name="mint-toast-pop">
+    <div class="mint-toast" v-show="visible" :class="customClass" :style="{ 'padding': iconClass === '' ? '10px' : '20px' }">
+      <i class="mint-toast-icon" :class="iconClass" v-if="iconClass !== ''"></i>
+      <span class="mint-toast-text" :style="{ 'padding-top': iconClass === '' ? '0' : '10px' }">{{ message }}</span>
+    </div>
+  </transition>
+</template>
+
+<style>
+  @component-namespace mint {
+    @component toast {
+      position: fixed;
+      max-width: 80%;
+      border-radius: 5px;
+      background: rgba(0, 0, 0, 0.7);
+      color: #fff;
+      box-sizing: border-box;
+      text-align: center;
+      z-index: 1000;
+      transition: opacity .3s linear;
+      @descendent icon {
+        display: block;
+        text-align: center;
+        font-size: 56px;
       }
-    },
-    ready: function () {
-      this.closeToast()
-    },
-    methods: {
-      closeToast () {
-        let self = this
-        setTimeout(function () {
-          self.toastIsHidden = false
-        }, 3000)
+      @descendent text {
+        font-size: 14px;
+        display: block;
+        text-align: center;
+      }
+      @when placetop {
+        top: 50px;
+        left: 50%;
+        transform: translate(-50%, 0);
+      }
+      @when placemiddle {
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+      @when placebottom {
+        bottom: 50px;
+        left: 50%;
+        transform: translate(-50%, 0);
+      }
+      @descendent pop-enter, pop-leave-active {
+        opacity: 0;
       }
     }
   }
-</script>
-<style  scoped>
-.fade-transition {
-  transition: opacity .3s ease;
-}
-.fade-enter, .fade-leave {
-  opacity: 0;
-}
-.dialog{  position:absolute; width:100%; left:0px; bottom:3px; height:4.8rem; line-height:4.8rem; color:#fff; font-size:1.25rem;}
-.tui-toast {
-position: fixed;
-z-index: 5000;
-top: 50%;
-left: 50%;
-transform: translate(-50%,-50%);
-background: rgba(0, 0, 0, 0.75);
-text-align: center;
-border-radius: 4px;
-color: #FFFFFF;
-}
-.tui-toast__content {
-    padding:0.5em;
-    color:#fff;
-    font-size: 18px;
-}
-
 </style>
+
+<script type="text/babel">
+  export default {
+    ready: function () {
+      window.alert('123')
+    },
+    props: {
+      message: String,
+      className: {
+        type: String,
+        default: ''
+      },
+      position: {
+        type: String,
+        default: 'middle'
+      },
+      iconClass: {
+        type: String,
+        default: ''
+      }
+    },
+    data() {
+      return {
+        visible: false
+      };
+    },
+    computed: {
+      customClass() {
+        var classes = [];
+        switch (this.position) {
+          case 'top':
+            classes.push('is-placetop');
+            break;
+          case 'bottom':
+            classes.push('is-placebottom');
+            break;
+          default:
+            classes.push('is-placemiddle');
+        }
+        classes.push(this.className);
+        return classes.join(' ');
+      }
+    }
+  };
+</script>

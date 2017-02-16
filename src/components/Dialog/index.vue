@@ -58,15 +58,7 @@ module.exports = {
   data () {
     return {
       mycontent: '',
-      // msg: {},
       isShow: true
-    }
-  },
-  events: {
-    'showMsg': function (data) {
-      this.isShow = true
-      this.msg.title = data.cont
-      this.msg.type = data.type
     }
   },
   methods: {

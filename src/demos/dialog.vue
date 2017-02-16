@@ -17,7 +17,7 @@ export default {
       dialogDatas: {
         title: '提示信息',
         des: '这里是描述信息',
-        type: 1
+        type: 3
       }
     }
   },
@@ -28,6 +28,11 @@ export default {
   methods: {
     showDialog: function() {
       this.isShowDialog = true
+    }
+  },
+  events: {
+    dialogClose: function () {
+      this.isShowDialog = false
     }
   }
 }

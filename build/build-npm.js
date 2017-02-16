@@ -33,7 +33,15 @@ function buildComponents(name) {
   _config.output.libraryTarget = 'umd'
   _config.output.library = 'vui' + name
   _config.output.path = path.resolve(__dirname, '../lib/components/' + name.toLowerCase() + '/')
-
+  _config.plugins = [
+    new webpack.IgnorePlugin(/\.\/vue.js$/),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false
+      }
+    }),
+    new webpack.optimize.OccurenceOrderPlugin()
+  ]
   touchDir(_config.output.path)
 
   webpack(_config, function () {
