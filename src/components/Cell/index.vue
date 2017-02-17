@@ -27,7 +27,7 @@ export default {
   methods: {
     goUrl () {
       if (this.url) {
-        window.location.href = '/#' + this.url
+        this.$router.go(this.url)
       }
     }
   }
