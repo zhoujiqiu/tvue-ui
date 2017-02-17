@@ -35,29 +35,5 @@
   /*group*/
   --group-title-left: 30px;
   --group-title-color: #888;
-  --group-font-size: 32px;
-  /*alert*/
-  --alert-width: 88%;
-  --alert-padding: 20px;
-  /*switch*/
-  --switch-width: 100px;
-  --switch-height: 56px;
-  --switch-offsetx: 42px;
-  --switch-bgc: #dfdfdf;
-  --switch-before-width: 96px;
-  --switch-before-height: 52px;
-  --switch-pseudo-bgc: #fff;
-  --switch-checked-bgc: #56ba37;
-  /*card*/
-  --card-header-padding: 28px 30px;
-  --card-bb-color: #aaa;
-  --card-body-padding: 30px;
-  --card-width: 80%;
-  --card-bgc: #fff;
-  /*tab*/
-  --tab-item-bgc: #fff;
-  --tab-line-bgc:  #aaa;
-  --tab-line-height: 4px;
-  --tab-line-select-color: #56ba37;
-  --tab-item-bb: 1px solid #aaa;
+  --group-font-size: 24px;
 }

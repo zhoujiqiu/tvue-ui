@@ -1,3 +1,4 @@
+@import "./common/reset.css";
 @import "./common/var.css";
 @import "./font/font.css";
 @import "./mixins/line.css";

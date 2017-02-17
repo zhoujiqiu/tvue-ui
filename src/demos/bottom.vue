@@ -43,7 +43,7 @@ a {
   position: fixed;
   bottom: 0px;
   width: 100%;
-  background-color: #42b983;
+  background-color: #59B6EF;
   z-index: 10;
   display: flex;
   justify-content: space-around;
