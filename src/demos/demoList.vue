@@ -2,15 +2,15 @@
   <div>
     <group title="demo list">
       <div class="demolist">
-        <cell url="/demo/toast" title="toast">
+        <cell url="/demo/toast" title="Toast">
           <i class="iconfont" slot="left-icon">&#xe62d;</i>
           <i class="iconfont" slot="right-icon">&#xe93d;</i>
         </cell>
-        <cell url="/demo/dialog" title="dialog">
+        <cell url="/demo/dialog" title="Dialog">
           <i class="iconfont" slot="left-icon">&#xe62d;</i>
           <i class="iconfont" slot="right-icon">&#xe93d;</i>
         </cell>
-        <cell url="/demo/button" title="button">
+        <cell url="/demo/button" title="Button">
           <i class="iconfont" slot="left-icon">&#xe62d;</i>
           <i class="iconfont" slot="right-icon">&#xe93d;</i>
         </cell>

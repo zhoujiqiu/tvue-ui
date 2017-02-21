@@ -3,7 +3,7 @@
     <div class="m-footer">
       <a v-link="{path:'/'}">首页</a>
       <a v-link="{path:'/demolist'}" >演示</a>
-      <a v-link="{path:'/about'}">关于</a>
+      <a href="https://github.com/zhoujiqiu/toon-ui" target="_blank">Github</a>
     </div>
   </div>
 </template>

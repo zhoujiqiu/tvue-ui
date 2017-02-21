@@ -4,8 +4,12 @@
         ToonUi
         <span>基于vue1.x的移动端组件库</span>
     </h1>
+    
     <m-bottom></m-bottom>
-    <router-view></router-view>
+    
+    <div class="container">
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
@@ -41,5 +45,27 @@ h1{
   color: #333;
   padding-bottom: 120px;
 }
-
+.container{
+  max-width:750px;
+  margin: 0 auto;
+  overflow-x:hidden;
+}
+.code-view{
+  font-size:16px;
+  margin-bottom:10px;
+  span{
+    display:block;
+  }
+  code{
+    border:1px solid #dddee3;
+    border-radius:5px;
+    background: #fff;
+    padding:20px;
+    display: block;
+  }
+  em{
+    display:block;
+    color:#999;
+  }
+}
 </style>
