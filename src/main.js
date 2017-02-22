@@ -7,8 +7,14 @@ import About from './demos/about.vue'
 import Button from './demos/button.vue'
 import Toast from './demos/toast.vue'
 import Dialog from './demos/dialog.vue'
+<<<<<<< HEAD
 import TabBar from './demos/TabBar.vue'
 import Search from './demos/search.vue'
+=======
+import Tab from './demos/tabbar.vue'
+import Loading from './demos/loading.vue'
+import Radio from './demos/radio.vue'
+>>>>>>> 80bada1278cec1c3df26c40e00c2dea8bbd727a8
 
 
 Vue.use(Router)
@@ -25,8 +31,14 @@ router.map({
   'demo/button': {component: Button, name: 'button'},
   'demo/toast': {component: Toast, name: 'toast'},
   'demo/dialog': {component: Dialog, name: 'dialog'},
+<<<<<<< HEAD
   'demo/tabBar': {component: TabBar, name: 'tabBar'},
   'demo/search': {component: Search, name: 'search'}
+=======
+  'demo/tab': {component: Tab, name: 'tab'},
+  'demo/loading': {component: Loading, name: 'loading'},
+  'demo/radio': {component: Radio, name: 'radio'}
+>>>>>>> 80bada1278cec1c3df26c40e00c2dea8bbd727a8
 })
 /* eslint-disable no-new */
 router.start(Vue.extend(App), '#app')

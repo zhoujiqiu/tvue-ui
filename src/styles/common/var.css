@@ -3,6 +3,7 @@
   /*color*/
   --color-red: #f00;
   --color-white: #fff;
+  --color-blue: #3395ff;
   --color-success: #E25241;
   --color-primary: #59B6EF;
   --color-cancel: #888;
@@ -15,7 +16,7 @@
   /*button*/
 
   --button-large-width: 100%;
-  --button-large-height: 50px;
+  --button-large-height: 44px;
   --button-submit-backgroundcolor: #3395ff;
   --button-default-color: #fff;
   --button-large-border-radius: 4px;

@@ -13,6 +13,9 @@
   outline: none;
   font-size: 18px;
 }
+.m-button--plain--blue {
+  @mixin button-style--plain var(--color-blue);
+}
 .m-button--plain--success {
   @mixin button-style--plain var(--color-success);
 }
@@ -21,6 +24,9 @@
 }
 .m-button--plain--cancel {
   @mixin button-style--plain var(--color-cancel);
+}
+.m-button--blue {
+  @mixin button-style var(--color-blue);
 }
 .m-button--success {
   @mixin button-style var(--color-success);

@@ -1,34 +1,24 @@
 <template>
-  <div>
-    <div class="des">color</div>
-    <m-button text="success" type="success"></m-button>
-    <m-button text="primary" type="primary"></m-button>
-    <m-button text="cancel" type="cancel"></m-button>
+  <div class="des">
+    <div class="des">default </div>
+    <m-button text="default font-size=17" type="default"></m-button>
+    <m-button text="botton-blue font-size=17" type="blue"></m-button>
+    <m-button text="botton-red font-size=17" type="red"></m-button>
+    <m-button text="botton-blue small font-size=16.5" type="blue" :small="true"></m-button>
+    <m-button text="botton-red small font-size=16.5" type="red" :small="true"></m-button>
     <div class="des">disable</div>
-    <m-button text="success" type="success" :disable="true"></m-button>
-    <m-button text="primary" type="primary" :disable="true"></m-button>
-    <m-button text="cancel" type="cancel" :disable="true"></m-button>
+    <m-button text="default disable font-size=17" type="default" :disable="true"></m-button>
+    <m-button text="botton-blue disable blue font-size=17" type="blue" :disable="true"></m-button>
+    <m-button text="botton-red disable red font-size=17" type="red" :disable="true"></m-button>
+    <m-button text="botton-blue disable small font-size=16.5" type="blue" :disable="true" :small="true"></m-button>
+    <m-button text="botton-red disable small font-size=16.5" type="red" :disable="true" :small="true"></m-button>
     <div class="des">plain</div>
-    <m-button text="success" type="success" :plain="true"></m-button>
-    <m-button text="primary" type="primary" :plain="true"></m-button>
-    <m-button text="cancel" type="cancel" :plain="true"></m-button>
-    <div class="des left">
-      <p>size</p>
-      <p class="p-left">button的宽度统一为100%，需要不同宽度的button时，外层加上一个div即可。高度需要自己覆盖。</p>
-    </div>
-    <div class="button-large">
-      <m-button text="large" type="success" :plain="true"></m-button>
-    </div>
-    <div class="button-middle">
-      <m-button text="middle" type="primary" :plain="true"></m-button>
-    </div>
-    <div class="button-small">
-      <m-button text="small" type="cancel" :plain="true"></m-button>
-    </div>
+    <m-button text="botton--plain--default plain font-size=17" type="default" :plain="true"></m-button>
+    <m-button text="botton--plain--default plain disable font-size=17" type="default" :plain="true" :disable="true"></m-button>
   </div>
 </template>
 <script>
-import MButton from '../components/MButton/index.vue'
+import MButton from '../components/Button/index.vue'
 
 export default {
   components: {
@@ -38,24 +28,6 @@ export default {
 </script>
 <style>
 .des {
-  text-align: center;
-  .p-left {
-    text-align: left;
-    text-indent: 44px;
-    line-height: 1.2;
-    font-size: 24px;
-  }
-}
-.button-large {
-  width: 100%;
-  margin: auto;
-}
-.button-middle {
-  width: 50%;
-  margin: auto;
-}
-.button-small {
-  width: 33%;
-  margin: auto;
+  padding:10px;
 }
 </style>
