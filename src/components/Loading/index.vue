@@ -1,10 +1,12 @@
 <template>
-  <div class="mint-indicator" v-show="visible" transition="mint-indicator" >
-    <div class="mint-indicator-wrapper" :style="{ 'padding': text ? '20px' : '15px' }">
-      <span class="mint-indicator-spin"></span>
-      <span class="mint-indicator-text" v-show="text">{{ text }}</span>
+  <div class="toonui-indicator" v-show="visible" transition="toonui-indicator" >
+    <div class="toonui-indicator-wrapper" :style="{ 'padding': text ? '20px' : '15px' }">
+      <span class="toonui-indicator-spin">
+        <div class="toonui-spinner-snake"></div>
+      </span>
+      <span class="toonui-indicator-text" v-show="text">{{ text }}</span>
     </div>
-    <div class="mint-indicator-mask" @touchmove.stop.prevent></div>
+    <div class="toonui-indicator-mask" @touchmove.stop.prevent></div>
   </div>
 </template>
 
@@ -21,9 +23,9 @@
   };
 </script>
 <style>
-  @component-namespace mint {
-    @component indicator {
-      @descendent wrapper {
+  .toonui {
+    &-indicator {
+      &-wrapper {
         position: fixed 50% * * 50%;
         transform: translate(-50%, -50%);
         border-radius: 5px;
@@ -33,20 +35,21 @@
         text-align: center;
       }
 
-      @descendent text {
+      &-text {
         display: block;
         color: #fff;
         text-align: center;
         margin-top: 10px;
         font-size: 16px;
+        font-weight:400;
       }
 
-      @descendent spin {
+      &-spin {
         display: inline-block;
         text-align: center;
       }
 
-      @descendent mask {
+      &-mask {
         position: fixed 0 * * 0;
         size: 100%;
         opacity: 0;
@@ -55,16 +58,16 @@
     }
   }
 
-  .mint-indicator-transition {
+  .toonui-indicator-transition {
     transition: opacity .2s linear;
   }
 
-  .mint-indicator-enter,
-  .mint-indicator-leave {
+  .toonui-indicator-enter,
+  .toonui-indicator-leave {
     opacity: 0;
   }
-  .mint-spinner-snake {
-    animation: mint-spinner-rotate 0.8s infinite linear;
+  .toonui-spinner-snake {
+    animation: toonui-spinner-rotate 0.8s infinite linear;
     border: 4px solid transparent;
     border-radius: 50%;
     border-top-color: #ccc;
@@ -74,7 +77,7 @@
     height:32px;
   }
 
-  @keyframes mint-spinner-rotate {
+  @keyframes toonui-spinner-rotate {
     0% {
       transform: rotate(0deg);
     }

@@ -15,11 +15,17 @@ export default {
     MButton
   },
   methods: {
-    Loading: function() {
-      Loading.open();
+    loading: function() {
+      Loading.open()
+      setTimeout(() => {
+        Loading.close()
+      },3000)
     },
     textLoading: function() {
-      Loading.open('加载中...');
+      Loading.open('加载中...')
+      setTimeout(() => {
+        Loading.close()
+      },3000)
     }
   }
 }
