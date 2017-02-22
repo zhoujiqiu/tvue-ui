@@ -1,19 +1,31 @@
 <template>
   <div class="dialog-demo">
-    <div class="des">Dialog</div>
+    <div class="des">loading</div>
     <m-button text="点击弹出 alert提示框" type="primary" @click="showAlert"></m-button>
     <m-button text="点击弹出 confirm提示框" type="primary" @click="showConfirm"></m-button>
     <m-button text="点击弹出 prompt提示框" type="primary" @click="showPrompt"></m-button>
     
+    <c-dialog v-if="isShowDialog" v-bind:msg="dialogDatas"></c-dialog> 
   </div>
 </template>
 <script>
 import MButton from '../components/MButton/index.vue'
-import Loading from '../components/Indicator/index.js'
+import cDialog from '../components/Dialog/index.vue'
 
 export default {
+  data () {
+    return {
+      isShowDialog: false,
+      dialogDatas: {
+        title: '提示信息',
+        des: '这里是描述信息',
+        type: 'alert'
+      }
+    }
+  },
   components: {
-    MButton
+    MButton,
+    cDialog
   },
   methods: {
     showAlert: function() {

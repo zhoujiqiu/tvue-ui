@@ -8,6 +8,7 @@ import Button from './demos/button.vue'
 import Toast from './demos/toast.vue'
 import Dialog from './demos/dialog.vue'
 import TabBar from './demos/TabBar.vue'
+import Loading from './demos/loading.vue'
 
 
 Vue.use(Router)
@@ -24,7 +25,8 @@ router.map({
   'demo/button': {component: Button, name: 'button'},
   'demo/toast': {component: Toast, name: 'toast'},
   'demo/dialog': {component: Dialog, name: 'dialog'},
-  'demo/tabBar': {component: TabBar, name: 'tabBar'}
+  'demo/tabBar': {component: TabBar, name: 'tabBar'},
+  'demo/loading': {component: Loading, name: 'loading'}
 })
 /* eslint-disable no-new */
 router.start(Vue.extend(App), '#app')

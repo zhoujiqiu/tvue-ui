@@ -18,6 +18,10 @@
           <i class="iconfont" slot="left-icon">&#xe62d;</i>
           <i class="iconfont" slot="right-icon">&#xe93d;</i>
         </cell>
+        <cell url="/demo/loading" title="Loading">
+          <i class="iconfont" slot="left-icon">&#xe62d;</i>
+          <i class="iconfont" slot="right-icon">&#xe93d;</i>
+        </cell>
       </div>
     </group>
   </div>
