@@ -1,19 +1,20 @@
 <template>
   <div class="tabBar-demo">
-    <div class="des">tabBar Demo</div>
+    <div class="des" @click='test'>tabbar</div>
     <t-tabbar v-bind:tabs='tabs'></t-tabbar> 
   </div>
 </template>
 <script>
-import TTabbar from '../components/TabBar/index.vue'
+import TTabbar from '../components/Tabbar/index.vue'
 export default {
   data () {
     return {
+      show: false,
       tabs:{
-        fixed: true, // 默认不传是false,true是固底
+        fixed: false, // 默认不传是false,true是固底
         isSelect: 1, // 第几个选中，从0开始计 
-        tabList: ['月度', '季度', '年度'],
-        isSelectCon: '我是季度内容'
+        tabList: ['deeedddd333e', '353ddd535', '444'],
+        isSelectCon: '1111111'
       }
     }
   },
