@@ -4,15 +4,6 @@
   <a class="tn-tab-item" v-for="item in tabs.tabList" :class="customClass" @click="iscur=$index">
     <span class="tn-tab-item-tit">{{item}}</span>
   </a> 
-   <!-- <a class="tn-tab-item">
-    <span class="tn-tab-item-tit">月度</span>
-   </a>
-   <a class="tn-tab-item is-selected">
-    <span class="tn-tab-item-tit">季度</span>
-   </a>
-   <a class="tn-tab-item">
-    <span class="tn-tab-item-tit">年度</span>
-   </a> -->
   </div>
   <div class="tn-tab-container-item">
     <a class="tn-cell">{{tabs.isSelectCon}}</a>
@@ -22,29 +13,19 @@
 <script>
 module.exports = {
   ready: function () {
-    console.log(this.tabs)
+    console.log(this.tabs.tabList[2])
   },
-  props: {
-    tabs: {
-      fixed: {
-        type: Boolean,
-        default: false
-      },
-      isSelect: Number,
-      tabList: Array,
-      isSelectCon: String
-    }
-  },
+  props: ['tabs'],
   data () {
     return {
+      tabs: '',
       mycontent: '',
       isShow: true
     }
   },
   computed: {
     customClass() {
-    var classes = [];
-    console.log(this.tabs.fixed)
+    let classes = [];
     switch (this.tabs.fixed) {
       case false:
         classes = [];
@@ -55,7 +36,7 @@ module.exports = {
     classes.push(this.className);
     return classes.join(' ');
     }
-},
+  },
   methods: {
   }
 }
@@ -95,8 +76,15 @@ module.exports = {
         flex: 1;
         text-decoration: none;
         height:44px; line-height:44px; 
+        .selected{
+          padding:0px 10px;
+          border-bottom:1px solid #FF4257;
+          color:#FF4257;
+          display:inline-block;
+          height:44px;
+      }
     }
-    .lab_item.selected span{padding:0px 10px; border-bottom:1px solid #FF4257; color:#FF4257; display:inline-block; height:44px;}
+    
     /*.tn-tab-item-icon {
         width: 24px;
         height: 24px;

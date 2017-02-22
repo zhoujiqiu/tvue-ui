@@ -1,7 +1,7 @@
 <template>
   <div class="dialog-demo">
     <div class="des">Dialog</div>
-    <m-button text="点击弹出 alert提示框" type="primary" @click="showAlert"></m-button>
+    <m-button text="点击弹出 alert提示ddd框" type="primary" @click="showAlert"></m-button>
     <m-button text="点击弹出 confirm提示框" type="primary" @click="showConfirm"></m-button>
     <m-button text="点击弹出 prompt提示框" type="primary" @click="showPrompt"></m-button>
     
@@ -17,7 +17,7 @@ export default {
     return {
       isShowDialog: false,
       dialogDatas: {
-        title: '提示信息',
+        title: '提示信息fff',
         des: '这里是描述信息',
         type: 'alert'
       }
@@ -30,7 +30,7 @@ export default {
   methods: {
     showAlert: function() {
       this.dialogDatas = {
-        title: '提示信息',
+        title: '22提示信息',
         des: '这里是描述信息',
         type: 'alert'
       }

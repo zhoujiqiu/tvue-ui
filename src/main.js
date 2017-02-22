@@ -7,7 +7,7 @@ import About from './demos/about.vue'
 import Button from './demos/button.vue'
 import Toast from './demos/toast.vue'
 import Dialog from './demos/dialog.vue'
-import TabBar from './demos/tabBar.vue'
+import Tab from './demos/tabbar.vue'
 import Loading from './demos/loading.vue'
 import Radio from './demos/radio.vue'
 
@@ -26,9 +26,14 @@ router.map({
   'demo/button': {component: Button, name: 'button'},
   'demo/toast': {component: Toast, name: 'toast'},
   'demo/dialog': {component: Dialog, name: 'dialog'},
+<<<<<<< HEAD
   'demo/tabBar': {component: TabBar, name: 'tabBar'},
   'demo/loading': {component: Loading, name: 'loading'},
   'demo/radio': {component: Radio, name: 'radio'}
+=======
+  'demo/tab': {component: Tab, name: 'tab'},
+  'demo/loading': {component: Loading, name: 'loading'}
+>>>>>>> f019a6eb1e379c52c3c91f8e07aebfbe263e23f2
 })
 /* eslint-disable no-new */
 router.start(Vue.extend(App), '#app')
