@@ -1,24 +1,39 @@
 <template>
 <div class="tab-container">
   <div class="tn-tabbar is-fixed">
-  <a class="tn-tab-item" v-for="item in tabs.tabList" :class="customClass" @click="iscur=$index">
-    <span class="tn-tab-item-tit">{{item}}</span>
+  <a class="tn-tab-item" v-for="item in tabsTitle" :class="customClass" @click="tabChange($index)">
+    <span class="tn-tab-item-tit" :class="{selected:isSelect==$index}">{{item}}</span>
   </a> 
   </div>
   <div class="tn-tab-container-item">
-    <a class="tn-cell">{{tabs.isSelectCon}}</a>
+    <div class="tn-cell" v-for="item in isSelectCon">
+     <div v-if='isSelect==$index'>{{item}}</div>
+    </div>
   </div>
 </div>
 </template>
 <script>
 module.exports = {
   ready: function () {
-    console.log(this.tabs.tabList[2])
+    console.log(this.isSelectCon)
   },
-  props: ['tabs'],
+  props: {
+    tabs: {
+      fixed: {
+        type: Boolean,
+        default: false
+      },
+      isSelect: Number,
+      tabList: Array,
+      isSelectCon: String
+    }
+  },
   data () {
     return {
-      tabs: '',
+      tabsTitle: this.tabs.tabList,
+      isSelectCon: this.tabs.isSelectCon,
+      isSelect: this.tabs.isSelect,
+      fixed: this.tabs.fixed,
       mycontent: '',
       isShow: true
     }
@@ -26,7 +41,7 @@ module.exports = {
   computed: {
     customClass() {
     let classes = [];
-    switch (this.tabs.fixed) {
+    switch (this.fixed) {
       case false:
         classes = [];
         break;
@@ -38,6 +53,10 @@ module.exports = {
     }
   },
   methods: {
+    tabChange(index) {
+      this.isSelect = index
+      this.$dispatch('tabChange', index)
+    }
   }
 }
 </script>
@@ -75,21 +94,15 @@ module.exports = {
         -ms-flex: 1;
         flex: 1;
         text-decoration: none;
-        height:44px; line-height:44px; 
+        height:44px; line-height:44px;
         .selected{
           padding:0px 10px;
-          border-bottom:1px solid #FF4257;
-          color:#FF4257;
+          border-bottom:1px solid #007AFF;
+          color:#000;
           display:inline-block;
           height:44px;
       }
     }
-    
-    /*.tn-tab-item-icon {
-        width: 24px;
-        height: 24px;
-        margin: 0 auto 5px;
-    }*/
     .tn-tab-item-label {
         color: inherit;
         font-size: 12px;
