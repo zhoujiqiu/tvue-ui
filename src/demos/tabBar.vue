@@ -1,7 +1,7 @@
 <template>
   <div class="tabBar-demo">
     <div class="des">tabBar Demo</div>
-    <t-tabbar></t-tabbar> 
+    <t-tabbar v-bind:tabs='tabs'></t-tabbar> 
   </div>
 </template>
 <script>
@@ -9,6 +9,12 @@ import TTabbar from '../components/TabBar/index.vue'
 export default {
   data () {
     return {
+      tabs:{
+        fixed: true, // 默认不传是false,true是固底
+        isSelect: 1, // 第几个选中，从0开始计 
+        tabList: ['月度', '季度', '年度'],
+        isSelectCon: '我是季度内容'
+      }
     }
   },
   components: {
@@ -41,12 +47,5 @@ export default {
 .des {
   text-align: center;
   font-size: 18px;
-}
-.icon-cell{
-  display: block;
-  font-size:30px;
-  &:before{
-    content: '\e665'
-  }
 }
 </style>

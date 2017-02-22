@@ -7,7 +7,7 @@ import About from './demos/about.vue'
 import Button from './demos/button.vue'
 import Toast from './demos/toast.vue'
 import Dialog from './demos/dialog.vue'
-import TabBar from './demos/TabBar.vue'
+import TabBar from './demos/tabBar.vue'
 
 
 Vue.use(Router)
