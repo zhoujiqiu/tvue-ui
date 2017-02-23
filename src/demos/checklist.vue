@@ -4,6 +4,7 @@
     <t-checklist
       class="page-part"
       title="复选框列表"
+      shaoling="是我么"
       v-model="value1"
       :options="options1">
     </t-checklist>
@@ -12,6 +13,20 @@
       title="第二个复选框列表"
       v-model="value2"
       :options="options2">
+    </t-checklist>
+    <t-checklist
+      class="page-part"
+      title="最多选两个"
+      :max="2"
+      v-model="value3"
+      :options="options3">
+    </t-checklist>
+    <t-checklist
+      align="right"
+      class="page-part"
+      title="右对齐"
+      v-model="value4"
+      :options="options4">
     </t-checklist>
   </div>
 </template>
