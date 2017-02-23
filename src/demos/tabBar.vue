@@ -1,21 +1,22 @@
 <template>
   <div class="tabBar-demo">
-    <div class="des" @click='test'>tabbar{{testCon}}</div>
-    <t-tabbar v-bind:tabs='tabs' v-if='show'></t-tabbar> 
+    <div class="des">tabbar</div>
+    <t-tabbar v-bind:tabs='tabs'></t-tabbar> 
   </div>
 </template>
 <script>
 import TTabbar from '../components/Tabbar/index.vue'
 export default {
+  ready: function () {
+    // this.tabs.isSelectCon.splice(0, 1, 'ready') // 只是其中的一个方法
+  },
   data () {
     return {
-      testCon:'shaolign',
-      show: true,
       tabs:{
         fixed: false, // 默认不传是false,true是固底
-        isSelect: 1, // 第几个选中，从0开始计 
-        isSelectCon: ['我是年度内eee容', '我是月度内容', '我是季度内容'],
-        tabList: ['年度', '月度', '季度'] // 默认无值
+        isSelect: 0, // 第几个选中，默认不传0开始计
+        isSelectCon: ['我初始化的年度内容', '我初始化的月度内容', '我初始化的季度内容'], // 选中的内容数组，无内容为空
+        tabList: ['年度', '月度', '季度'] // tab的title值数组，默认无值
       }
     }
   },
@@ -24,31 +25,11 @@ export default {
   },
   events: {
     tabChange: function (index) {
-      // this.show = false
-      this.testCon = 'sksloeeeoeo'
-      this.tabs.isSelectCon = ['dddddd', '我的新的内容，可以是post类的数据返回哟', 'dd0e0e00e']
-      // setTimeout(function () {
-      //   this.show = true
-      // }, 3000)
+      let j = parseInt(index) // 注意，需转化为整数
+      this.tabs.isSelectCon.splice(j, 1, '我可以是post请求回来的数据哟'+j) // 只是其中的一个方法
     }
   },
   methods: {
-    // showToast1: function() {
-    //   Toast('提示消息')
-    // },
-    // showToast2: function() {
-    //   Toast({
-    //     message: '提示消息',
-    //     duration: 3000,
-    //     iconClass: 'iconfont icon-cell'
-    //   })
-    // },
-    // showToast3: function() {
-    //   Toast({
-    //     message: '提示消息',
-    //     position: 'bottom'
-    //   })
-    // }
   }
 }
 </script>
