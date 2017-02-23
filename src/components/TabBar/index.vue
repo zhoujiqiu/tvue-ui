@@ -7,7 +7,7 @@
   </div>
   <div class="tn-tab-container-item">
     <div class="tn-cell" v-for="item in tabs.isSelectCon">
-     <div v-if='tabs.isSelect==$index'>{{item}}</div>
+     <div v-if='tabs.isSelect==$index'>{{{item}}}</div>
     </div>
   </div>
 </div>
