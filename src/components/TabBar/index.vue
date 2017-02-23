@@ -15,7 +15,6 @@
 <script>
 module.exports = {
   ready: function () {
-    console.log(this.tabs.isSelect)
   },
   props: {
     tabs: {
@@ -32,16 +31,16 @@ module.exports = {
     return {
       // tabList: this.tabs.tabList,
       // isSelectCon: this.tabs.isSelectCon,
-      isSelect: this.tabs.isSelect,
-      fixed: this.tabs.fixed,
-      mycontent: '',
-      isShow: true
+      // isSelect: this.tabs.isSelect,
+      // fixed: this.tabs.fixed,
+      // mycontent: '',
+      // isShow: true
     }
   },
   computed: {
     customClass() {
     let classes = [];
-    switch (this.fixed) {
+    switch (this.tabs.fixed) {
       case false:
         classes = [];
         break;
