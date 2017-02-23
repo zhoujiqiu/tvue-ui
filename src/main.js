@@ -8,6 +8,7 @@ import Button from './demos/button.vue'
 import Toast from './demos/toast.vue'
 import Dialog from './demos/dialog.vue'
 import Tab from './demos/tabbar.vue'
+import Checklist from './demos/checklist.vue'
 import Loading from './demos/loading.vue'
 import Radio from './demos/radio.vue'
 
@@ -27,6 +28,7 @@ router.map({
   'demo/toast': {component: Toast, name: 'toast'},
   'demo/dialog': {component: Dialog, name: 'dialog'},
   'demo/tab': {component: Tab, name: 'tab'},
+  'demo/checklist': {component: Checklist, name: 'checklist'},
   'demo/loading': {component: Loading, name: 'loading'},
   'demo/radio': {component: Radio, name: 'radio'}
 })
