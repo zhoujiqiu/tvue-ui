@@ -8,6 +8,8 @@ import Button from './demos/button.vue'
 import Toast from './demos/toast.vue'
 import Dialog from './demos/dialog.vue'
 import Tab from './demos/tabbar.vue'
+import DatetimePicker from './demos/datetimePicker.vue'
+import Checklist from './demos/checklist.vue'
 import Loading from './demos/loading.vue'
 import Radio from './demos/radio.vue'
 
@@ -27,6 +29,8 @@ router.map({
   'demo/toast': {component: Toast, name: 'toast'},
   'demo/dialog': {component: Dialog, name: 'dialog'},
   'demo/tab': {component: Tab, name: 'tab'},
+  'demo/datetimePicker': {component: DatetimePicker, name: 'datetimePicker'},
+  'demo/checklist': {component: Checklist, name: 'checklist'},
   'demo/loading': {component: Loading, name: 'loading'},
   'demo/radio': {component: Radio, name: 'radio'}
 })
