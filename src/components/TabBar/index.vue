@@ -88,7 +88,9 @@ module.exports = {
         }
     }
     .tn-tab-item {
+        color:#777E8C;
         display: block;
+        font-size:16px;
         -webkit-box-flex: 1;
         -ms-flex: 1;
         flex: 1;
@@ -96,7 +98,7 @@ module.exports = {
         height:44px; line-height:44px;
         .selected{
           padding:0px 10px;
-          border-bottom:1px solid #007AFF;
+          border-bottom:2px solid #007AFF;
           color:#000;
           display:inline-block;
           height:44px;
@@ -108,14 +110,13 @@ module.exports = {
         line-height: 1;
     }
     .tn-tabbar>.tn-tab-item.is-selected>.tn-tab-item-tit {
-        border-bottom:1px solid #007AFF;
+        border-bottom:2px solid #007AFF;
         color: #000;
         padding:0px 10px;
         display:inline-block;
         height:44px;
     }
     .tn-tab-container-item {
-        color:#000;
         padding: 10px;
         -ms-flex-negative: 0;
         flex-shrink: 0;

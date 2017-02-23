@@ -1,69 +1,62 @@
 <template>
   <div class="dialog-demo">
-    <div class="des">Dialog</div>
-    <m-button text="点击弹出 alert提示框" type="primary" @click="showAlert"></m-button>
-    <m-button text="点击弹出 confirm提示框" type="primary" @click="showConfirm"></m-button>
-    <m-button text="点击弹出 prompt提示框" type="primary" @click="showPrompt"></m-button>
-    
-    <c-dialog v-if="isShowDialog" v-bind:msg="dialogDatas"></c-dialog> 
+    <div class="des">Checklist</div>
+    <t-checklist
+      class="page-part"
+      title="复选框列表"
+      v-model="value1"
+      :options="options1">
+    </t-checklist>
+    <t-checklist
+      class="page-part"
+      title="第二个复选框列表"
+      v-model="value2"
+      :options="options2">
+    </t-checklist>
   </div>
 </template>
 <script>
 import MButton from '../components/MButton/index.vue'
-import cDialog from '../components/Dialog/index.vue'
-
+import TChecklist from '../components/Checklist/index.vue'
 export default {
-  data () {
+  // name: 'page-checklist',
+  data() {
     return {
-      isShowDialog: false,
-      dialogDatas: {
-        title: '提示信息',
-        des: '这里是描述信息',
-        type: 'alert'
-      }
-    }
+      value1: [],
+      value2: ['选中禁用的值'],
+      value3: ['选项A'],
+      value4: []
+    };
   },
   components: {
-    MButton,
-    cDialog
+    TChecklist
   },
-  methods: {
-    showAlert: function() {
-      this.dialogDatas = {
-        title: '提示信息',
-        des: '这里是描述信息',
-        type: 'alert'
+  created() {
+    this.options1 = ['选项A', '选项B', '选项C'];
+    this.options3 = ['选项A', '选项B', '选项C', '选项D'];
+    this.options4 = ['选项A', '选项B', '选项C', '选项D'];
+    this.options2 = [
+      {
+        label: '被禁用',
+        value: '值F',
+        disabled: true
+      },
+      {
+        label: '选中禁用',
+        value: '选中禁用的值',
+        disabled: true
+      },
+      {
+        label: '选项A',
+        value: '值A'
+      },
+      {
+        label: '选项B',
+        value: '值B'
       }
-      this.isShowDialog = true
-    },
-    showConfirm: function() {
-      this.dialogDatas = {
-        title: '提示信息',
-        des: '请确认此操作',
-        type: 'confirm'
-      }
-      this.isShowDialog = true
-    },
-    showPrompt: function() {
-      this.dialogDatas = {
-        title: '请输入您的姓名',
-        type: 'prompt'
-      }
-      this.isShowDialog = true
-    }
-  },
-  events: {
-    dialogClose: function () {
-      this.isShowDialog = false
-    },
-    dialogSure: function (param) {
-      if (param) {
-        window.alert(param.content)
-      }
-      this.isShowDialog = false
-    }
+    ];
   }
-}
+};
 </script>
 <style>
 .des {

@@ -1,147 +1,152 @@
 <template>
-<div v-if="isShow">
-  <div class="mark_bg"></div>
-  <div class="dialogBox">
-    <div class="dialog-title" v-if="msg.title!=='' && msg.type=='alert' || msg.type=='confirm' || msg.type=='prompt'">{{msg.title}}</div>
-    <div class="dialog-content" v-if="msg.des!='' && msg.type=='alert' || msg.type=='confirm'">{{msg.des}}</div>
-    <div class="dialog-content" v-if="msg.type=='prompt'">
-      <div class="tag_content">
-        <div class="input">
-          <input type='text' v-model="mycontent">
-        </div>
-      </div>
-    </div>
-    <div class="btn_box btn_box1" v-if="msg.type=='alert'">
-      <ul class="btn1">
-        <li>
-          <button @click="closeDialog()">确定</button>
-        </li>
-    </div>
-    <div class="btn_box" v-if="msg.type=='confirm' || msg.type=='prompt'">
-      <ul class="btn2">
-        <li class="btn_red">
-          <button @click="closeDialog">取消</button>
-        </li>
-        <li class="btn_grey">
-          <button @click="okDialog" v-if="msg.type=='confirm'">确定</button>
-          <button @click="confirmDialog" v-if="msg.type=='prompt'">确定</button>
-        </li>
-      </ul>
-    </div>
+  <div class="mint-checklist" :class="{ 'is-limit': max <= value.length }">
+    <label class="mint-checklist-title" v-text="title"></label>
+    <x-cell v-for="option in options">
+      <label class="mint-checklist-label" slot="title">
+        <span
+          :class="{'is-right': align === 'right'}"
+          class="mint-checkbox">
+          <input
+            class="mint-checkbox-input"
+            type="checkbox"
+            v-model="value"
+            :disabled="option.disabled"
+            :value="option.value || option">
+            <span class="mint-checkbox-core"></span>
+        </span>
+        <span class="mint-checkbox-label" v-text="option.label || option"></span>
+      </label>
+    </x-cell>
   </div>
-</div>
 </template>
+
 <script>
-module.exports = {
-  ready: function () {
-    if (this.msg.type === 'prompt') {
-      setTimeout(function () {
-        document.querySelector('.tag_content input').focus()
-      }, 100)
+// import XCell from 'mint-ui/packages/cell/index.js';
+// if (process.env.NODE_ENV === 'component') {
+//   require('mint-ui/packages/cell/style.css');
+// }
+
+/**
+ * mt-checklist
+ * @module components/checklist
+ * @desc 复选框列表，依赖 cell 组件
+ *
+ * @param {(string[]|object[])} options - 选项数组，可以传入 [{label: 'label', value: 'value', disabled: true}] 或者 ['ab', 'cd', 'ef']
+ * @param {string[]} value - 选中值的数组
+ * @param {string} title - 标题
+ * @param {number} [max] - 最多可选的个数
+ * @param {string} [align=left] - checkbox 对齐位置，`left`, `right`
+ *
+ *
+ * @example
+ * <mt-checklist :value.sync="value" :options="['a', 'b', 'c']"></mt-checklist>
+ */
+export default {
+  // name: 'tn-checklist',
+  props: {
+    max: Number,
+    title: String,
+    align: String,
+    options: {
+      type: Array,
+      required: true
+    },
+    value: Array
+  },
+
+  components: {
+    // XCell
+  },
+
+  computed: {
+    limit() {
+      return this.max < this.value.length;
     }
   },
-  props: ['msg'],
-  data () {
-    return {
-      mycontent: '',
-      isShow: true
-    }
-  },
-  methods: {
-    closeDialog () {
-      this.isShow = false
-      this.$dispatch('dialogClose')
-    },
-    okDialog () {
-      this.isShow = false
-      this.$dispatch('dialogSure')
-    },
-    confirmDialog () {
-      let temp = this.mycontent || ''
-      temp = temp.replace(/\s/g, '')
-      this.isShow = false
-      this.$dispatch('dialogSure', {content: this.mycontent})
+
+  watch: {
+    value() {
+      if (this.limit) {
+        this.value.pop();
+      }
     }
   }
-}
+};
 </script>
-<style lang="less">
-  .mark_bg{
-    width:100%;
-    height:100%;
-    position:fixed;
-    top:0;left:0;
-    z-index:2000;
-    background-color:#000;
-    opacity:0.5;
-  }
-  .dialogBox{
-    width:85%;
-    background:#fff;
-    position:fixed;
-    left:50%;
-    top:50%;
-    z-index:2100;
-    text-align:center;
-    border-radius:6px;
-    transform: translate(-50%,-50%);
-    overflow:hidden;
-    .dialog-title{
-      padding-top:1em;
-      font-size:16px;
-      color:#333;
+
+<style lang="css">
+  .mint-cell-wrapper {
+      
+      background:#fff;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      box-sizing: border-box;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      font-size: 16px;
+      line-height: 1;
+      min-height: inherit;
+      overflow: hidden;
+      padding: 10px 0 10px 10px;
+      width: 100%;
+      .mint-checkbox-input:checked+.mint-checkbox-core {
+      background-color: #26a2ff;
+      border-color: #26a2ff;
     }
-    .dialog-content{
-      color:#999;
-      font-size:14px;
-      padding:10px 20px 15px;
-      line-height:30px;
+    .mint-checkbox-core {
+        display: inline-block;
+        background-color: #fff;
+        border-radius: 100%;
+        border: 1px solid #ccc;
+        position: relative;
+        width: 20px;
+        height: 20px;
+        vertical-align: middle;
     }
-    .btn_box{
-      position: relative;
-      &:before{
-          content: '';
-          position:absolute;
-          z-index:2;
-          left:0;
-          top:0;
-          width:100%;
-          height:1px;
-          background-image: linear-gradient(0deg, #dddee3 50%, transparent 50%);
-      }
-      ul.btn1{
-        overflow:hidden;
-        button{height:44px; line-height:44px; text-align: center;font-size:16px;border:none; display: block;width:100%;color:#59B6EF;background: #fff;}
-      }
-      ul.btn2{
-        overflow:hidden;
-        li{
-          float:left;width:50%;
-          &:first-child{
-            position:relative;
-            &:before{
-                content: '';
-                position:absolute;
-                z-index:1;
-                right:0;
-                top:0;
-                width:1px;
-                height:100%;
-                background-image: linear-gradient(90deg, #dddee3 50%, transparent 50%);
-            }
+    .mint-checkbox-input:checked+.mint-checkbox-core:after {
+        border-color: #fff;
+        -webkit-transform: rotate(45deg) scale(1);
+        transform: rotate(45deg) scale(1);
+    }
+    .mint-checkbox-core:after {
+        border: 2px solid transparent;
+        border-left: 0;
+        border-top: 0;
+        content: " ";
+        top: 3px;
+        left: 6px;
+        position: absolute;
+        width: 5px;
+        height: 9px;
+        -webkit-transform: rotate(45deg) scale(0);
+        transform: rotate(45deg) scale(0);
+        -webkit-transition: -webkit-transform .2s;
+        transition: -webkit-transform .2s;
+        transition: transform .2s;
+        transition: transform .2s, -webkit-transform .2s;
+    }
+    .mint-cell-title {
+        -webkit-box-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+    }
+    .mint-checklist-label {
+        display: block;
+        padding: 0 10px;
+          .mint-checkbox-input {
+          display: none;
           }
-        }
-        button{height:44px; line-height: 44px; text-align: center;font-size:16px;border:none; display: block;width:100%;background: #fff;}
-        .btn_red button{color:#333}
-        .btn_grey button{color: #59B6EF}
-      }
     }
-    .tag_content .input{ 
-      height: 30px;position: relative;margin:0 auto;width:100%;
-      input{  position: absolute;top:1px;left:1px;z-index:200;width:95%; height: 28px; font-size:14px; border: none; display: block; line-height: 28px;-webkit-appearance: none; background: #fff;padding:0px 5px; margin:0px;}
+    .mint-cell-value {
+        color: #888;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
     }
-    .tag_content .input:after {
-      content: " ";width: 200%;height: 200%; position: absolute;top: 0;left: 0;z-index:100;border: 1px solid #ACB3BF;transform: scale(.5);transform-origin: 0 0;box-sizing: border-box;border-radius:4px;
-    }
-  }
+}
 </style>
