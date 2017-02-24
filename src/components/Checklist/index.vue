@@ -123,7 +123,7 @@ export default {
             border-color: #26a2ff;
 
             &::after {
-              background:#fff;
+              /*background:#fff;*/
               border-color: #fff;
               transform: rotate(45deg) scale(1);
             }
