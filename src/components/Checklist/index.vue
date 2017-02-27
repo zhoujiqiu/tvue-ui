@@ -93,7 +93,8 @@ export default {
 <style lang="css">
   @component-namespace tn {
     @component checklist {
-
+      background:#fff;
+      padding:10px;
       .tn-cell {
         padding: 0;
       }
