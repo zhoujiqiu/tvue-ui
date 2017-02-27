@@ -4,16 +4,19 @@
     <t-checklist
       class="page-part"
       title="复选框列表"
-      shaoling="是我么"
       v-model="value1"
       :options="options1">
     </t-checklist>
+    <div title="选中的项">选中的项:{{ value1 }}
+    </div>
     <t-checklist
       class="page-part"
       title="第二个复选框列表"
       v-model="value2"
       :options="options2">
     </t-checklist>
+    <div title="选中的项">选中的项:{{ value2 }}
+    </div>
     <t-checklist
       class="page-part"
       title="最多选两个"
@@ -21,6 +24,8 @@
       v-model="value3"
       :options="options3">
     </t-checklist>
+    <div title="选中的项">选中的项:{{ value3 }}
+    </div>
     <t-checklist
       align="right"
       class="page-part"
@@ -28,6 +33,8 @@
       v-model="value4"
       :options="options4">
     </t-checklist>
+    <div title="选中的项">选中的项:{{ value4 }}
+    </div>
   </div>
 </template>
 <script>
@@ -37,10 +44,10 @@ export default {
   // name: 'page-checklist',
   data() {
     return {
-      // value1: [],
-      // value2: ['选中禁用的值'],
-      // value3: ['选项A'],
-      // value4: []
+      value1: [],
+      value2: ['选中禁用的值','值F'],
+      value3: ['选项A'],
+      value4: []
     };
   },
   components: {
@@ -48,6 +55,8 @@ export default {
   },
   created() {
     this.options1 = ['选项A', '选项B', '选项C'];
+    this.options3 = ['选项A', '选项B', '选项C', '选项D'];
+    this.options4 = ['选项A', '选项B', '选项C', '选项D'];
     this.options2 = [
       {
         label: '被禁用',
@@ -68,8 +77,6 @@ export default {
         value: '值B'
       }
     ];
-    this.options3 = ['选项A', '选项B', '选项C', '选项D'];
-    this.options4 = ['选项A', '选项B', '选项C', '选项D'];
   }
 };
 </script>

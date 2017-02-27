@@ -1,20 +1,29 @@
 <template>
   <div class="tn-cell-wrapper tn-checklist" :class="{ 'is-limit': max <= value.length }">
     <div>
-      <label class="tn-checklist__title" v-text="title"></label>
+      <label class="tn-checklist__title" v-text="title" ></label>
     </div>
       <label  v-for="option in options" class="tn-checklist__label">
-        <span :class="{'is-right': align === 'right'}" class="tn-checkbox">
-          <input type="checkbox" name="" class="tn-checkbox__input" :disabled="option.disabled" :value="option.value || option" @click="checkedFn">
+        <span v-if="option.value=='选中禁用的值'" :class="{'is-right': align === 'right'}" class="tn-checkbox">
+          <input type="checkbox" class="tn-checkbox__input" 
+          v-model="value"
+          checked="checked"
+          :disabled="option.disabled" 
+          :value="option.value || option" 
+          @click="checkedFn">
           <span class='tn-checkbox__core' :class="{'tn-checkbox__checked':ischeck}"></span>
         </span>
+        <!---->
+        <span v-else :class="{'is-right': align === 'right'}" class="tn-checkbox">
+          <input type="checkbox" class="tn-checkbox__input" 
+          :disabled="option.disabled" 
+          :value="option.value || option" 
+          @click="checkedFn">
+          <span class='tn-checkbox__core' :class="{'tn-checkbox__checked':ischeck}"></span>
+        </span>
+        <!---->
         <span class="tn-checkbox__label" v-text="option.label || option"></span>
       </label>
-   <div class="mint-cell__title">
-   <!----> <span class="mint-cell__text">选中的项</span> 
-   <!----></div> 
-   <div class="mint-cell__value">
-   [{{value}}]</div>
   </div>   
 </template>
 
@@ -35,6 +44,9 @@
  */
 export default {
   // name: 'tn-checklist',
+  ready() {
+    console.log(this.value2)
+  },
   props: {
     max: Number,
     title: String,
@@ -55,17 +67,19 @@ export default {
   },
 
   computed: {
-    limit() {
-      return this.max < this.value.length;
-    }
+    // limit() {
+    //   debugger
+    //   return this.max < this.value.length;
+    // }
   },
 
   watch: {
-    value() {
-      if (this.limit) {
-        this.value.pop();
-      }
-    }
+    // value() {
+    //   debugger
+    //   if (this.limit) {
+    //     this.value.pop();
+    //   }
+    // }
   },
   methods: {
     checkedFn() {
@@ -79,7 +93,8 @@ export default {
 <style lang="css">
   @component-namespace tn {
     @component checklist {
-
+      background:#fff;
+      padding:10px;
       .tn-cell {
         padding: 0;
       }
