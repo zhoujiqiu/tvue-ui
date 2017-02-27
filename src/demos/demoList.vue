@@ -22,6 +22,11 @@
           <i class="iconfont" slot="left-icon">&#xe62d;</i>
           <i class="iconfont" slot="right-icon">&#xe93d;</i>
         </cell>
+        <cell url="/demo/radio" title="radio">
+          <span slot="center">单选框</span>
+          <i class="iconfont" slot="left-icon">&#xe62d;</i>
+          <i class="iconfont" slot="right-icon">&#xe93d;</i>
+        </cell>
         <cell url="/demo/checklist" title="checklist">
           <span slot="center">复选框</span>
           <i class="iconfont" slot="left-icon">&#xe62d;</i>
