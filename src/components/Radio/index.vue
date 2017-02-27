@@ -1,7 +1,7 @@
 <template>
   <ul class="m-radio">
     <li v-for="option in options">
-      <label @click="test(option)">
+      <label>
         <span
           :class="{'is-right': isRight, 'in': option.value === value}"
           class="m-radio-val">
@@ -49,11 +49,11 @@ export default {
   },
   methods: {
     test (option) {
-      if (!option.disabled) {
-        console.log(this.value)
-      } else {
-        alert('已经禁用')
-      }
+      // if (!option.disabled) {
+      //   console.log(this.value)
+      // } else {
+      //   alert('已经禁用')
+      // }
     }
   }
 }
