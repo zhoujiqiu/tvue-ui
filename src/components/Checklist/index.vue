@@ -1,7 +1,7 @@
 <template>
   <div class="tn-cell-wrapper tn-checklist" :class="{ 'is-limit': max <= options.hasChecked.length }">
     <div>
-      <label class="tn-checklist__title" v-text="title" ></label>
+      <!-- <label class="tn-checklist__title" v-text="title" ></label> -->
     </div>
       <label  v-for="option in options.optionList" class="tn-checklist__label">
         <span v-if="options.hasChecked.includes(option.value)" :class="{'is-right': align === 'right'}" class="tn-checkbox">
@@ -97,15 +97,16 @@ export default {
   @component-namespace tn {
     @component checklist {
       background:#fff;
-      padding:10px;
       .tn-cell {
         padding: 0;
       }
 
       @descendent label {
         display: block;
-        padding: 0 10px;
+        padding:5px 0 10px 10px;
         height:34px;
+        margin-bottom:5px;
+        border-bottom:1px solid #EEEDD3;
       }
 
       @descendent title {
@@ -134,7 +135,7 @@ export default {
       }
 
       @descendent input {
-        display: nonde;
+        display: none;
         &:checked {
           + .tn-checkbox__core {
             background-color: #26a2ff;
