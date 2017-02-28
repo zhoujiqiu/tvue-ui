@@ -1,24 +1,23 @@
 <template>
-  <div class="tn-cell-wrapper tn-checklist" :class="{ 'is-limit': max <= value.length }">
+  <div class="tn-cell-wrapper tn-checklist" :class="{ 'is-limit': max <= options.hasChecked.length }">
     <div>
-      <label class="tn-checklist__title" v-text="title" ></label>
+      <!-- <label class="tn-checklist__title" v-text="title" ></label> -->
     </div>
-      <label  v-for="option in options" class="tn-checklist__label">
-        <span v-if="option.value=='选中禁用的值'" :class="{'is-right': align === 'right'}" class="tn-checkbox">
+      <label  v-for="option in options.optionList" class="tn-checklist__label">
+        <span v-if="options.hasChecked.includes(option.value)" :class="{'is-right': align === 'right'}" class="tn-checkbox">
           <input type="checkbox" class="tn-checkbox__input" 
-          v-model="value"
+          v-model="options.hasChecked"
           checked="checked"
           :disabled="option.disabled" 
-          :value="option.value || option" 
-          @click="checkedFn">
+          :value="option.value || option" >
           <span class='tn-checkbox__core' :class="{'tn-checkbox__checked':ischeck}"></span>
         </span>
         <!---->
         <span v-else :class="{'is-right': align === 'right'}" class="tn-checkbox">
-          <input type="checkbox" class="tn-checkbox__input" 
+          <input type="checkbox" class="tn-checkbox__input"
+          v-model="options.hasChecked"
           :disabled="option.disabled" 
-          :value="option.value || option" 
-          @click="checkedFn">
+          :value="option.value || option">
           <span class='tn-checkbox__core' :class="{'tn-checkbox__checked':ischeck}"></span>
         </span>
         <!---->
@@ -32,33 +31,38 @@
  * mt-checklist
  * @module components/checklist
  *
- * @param {(string[]|object[])} options - 选项数组，可以传入 [{label: 'label', value: 'value', disabled: true}] 或者 ['ab', 'cd', 'ef']
- * @param {string[]} value - 选中值的数组
+ * @param {(string[]|object[])} options.optionList - 选项数组，可以传入 [{label: 'label', value: 'value', disabled: true}] 或者 ['ab', 'cd', 'ef']
+ * @param {string[]} options.hasChecked - 选中值的数组
  * @param {string} title - 标题
  * @param {number} [max] - 最多可选的个数
  * @param {string} [align=left] - checkbox 对齐位置，`left`, `right`
  *
  *
  * @example
- * <mt-checklist :value.sync="value" :options="['a', 'b', 'c']"></mt-checklist>
+ * <mt-checklist :value.sync="value" :options="options"></mt-checklist>
+ options3 = {
+    hasChecked: ['选项A2'], // 选中的值，与optionList中的value相同即为选中
+    optionList: ['选项A2', '选项B2', '选项C2', '选项D2']
+  }
  */
 export default {
   // name: 'tn-checklist',
   ready() {
-    console.log(this.value2)
   },
   props: {
+    checkedValue: Array,
     max: Number,
     title: String,
     align: String,
     options: {
-      type: Array,
+      type: Object,
       required: true
-    },
-    value: Array
+    }
+    // value: Array
   },
   data() {
     return {
+      checkedNames: this.options.hasChecked,
       ischeck: false
     };
   },
@@ -67,24 +71,23 @@ export default {
   },
 
   computed: {
-    // limit() {
-    //   debugger
-    //   return this.max < this.value.length;
-    // }
+    limit() {
+      debugger
+      console.log(this.max < this.options.hasChecked.length)
+      return this.max < this.value.length
+    }
   },
 
   watch: {
-    // value() {
-    //   debugger
-    //   if (this.limit) {
-    //     this.value.pop();
-    //   }
-    // }
+    value() {
+      if (this.limit) {
+        this.value.pop()
+      }
+    }
   },
   methods: {
-    checkedFn() {
-
-      this.ischeck = true
+    clickCheck() {
+      console.log(this.options.hasChecked.length)
     }
   }
 };
@@ -94,15 +97,16 @@ export default {
   @component-namespace tn {
     @component checklist {
       background:#fff;
-      padding:10px;
       .tn-cell {
         padding: 0;
       }
 
       @descendent label {
         display: block;
-        padding: 0 10px;
+        padding:5px 0 10px 10px;
         height:34px;
+        margin-bottom:5px;
+        border-bottom:1px solid #EEEDD3;
       }
 
       @descendent title {
@@ -113,7 +117,7 @@ export default {
       }
 
       @when limit {
-        .tn-checkbox-core:not(:checked) {
+        .tn-checkbox__core:not(:checked) {
           background-color: #ccc;
           border-color: #ccc;
         }
@@ -171,16 +175,6 @@ export default {
           transition: transform .2s;
         }
       }
-      /*@descendent checked{
-            background-color: #26a2ff;
-            border-color: #26a2ff;
-
-            &::after {
-              background:#fff;
-              border-color: #fff;
-              transform: rotate(45deg) scale(1);
-            }
-          }*/
     }
   }
 </style>
