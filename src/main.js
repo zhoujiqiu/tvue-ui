@@ -13,6 +13,9 @@ import Checklist from './demos/checklist.vue'
 import Pulldown from './demos/Pulldown.vue'
 import Loading from './demos/loading.vue'
 import Radio from './demos/radio.vue'
+import Field from './demos/field.vue'
+import Switch from './demos/switch.vue'
+import Tcell from './demos/tcell.vue'
 
 
 Vue.use(Router)
@@ -34,6 +37,9 @@ router.map({
   'demo/checklist': {component: Checklist, name: 'checklist'},
   'demo/pulldown': {component: Pulldown, name: 'pulldown'},
   'demo/loading': {component: Loading, name: 'loading'},
+  'demo/field': {component: Field, name: 'field'},
+  'demo/switch': {component: Switch, name: 'switch'},
+  'demo/tcell': {component: Tcell, name: 'tcell'},
   'demo/radio': {component: Radio, name: 'radio'}
 })
 /* eslint-disable no-new */

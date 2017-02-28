@@ -12,8 +12,8 @@
           <i class="iconfont" slot="left-icon">&#xe62d;</i>
           <i class="iconfont" slot="right-icon">&#xe93d;</i>
         </cell>
-        <cell url="/demo/button" title="Button">
-          <span slot="center">按钮组件</span>
+        <cell url="/demo/loading" title="Loading">
+          <span slot="center">加载提示框</span>
           <i class="iconfont" slot="left-icon">&#xe62d;</i>
           <i class="iconfont" slot="right-icon">&#xe93d;</i>
         </cell>
@@ -27,6 +27,16 @@
           <i class="iconfont" slot="left-icon">&#xe62d;</i>
           <i class="iconfont" slot="right-icon">&#xe93d;</i>
         </cell>
+        <cell url="/demo/button" title="Button">
+          <span slot="center">按钮组件</span>
+          <i class="iconfont" slot="left-icon">&#xe62d;</i>
+          <i class="iconfont" slot="right-icon">&#xe93d;</i>
+        </cell>
+        <cell url="/demo/field" title="Field">
+          <span slot="center">表单编辑器</span>
+          <i class="iconfont" slot="left-icon">&#xe62d;</i>
+          <i class="iconfont" slot="right-icon">&#xe93d;</i>
+        </cell>
         <cell url="/demo/radio" title="radio">
           <span slot="center">单选框</span>
           <i class="iconfont" slot="left-icon">&#xe62d;</i>
@@ -37,8 +47,13 @@
           <i class="iconfont" slot="left-icon">&#xe62d;</i>
           <i class="iconfont" slot="right-icon">&#xe93d;</i>
         </cell>
-        <cell url="/demo/loading" title="Loading">
-          <span slot="center">加载提示框</span>
+        <cell url="/demo/switch" title="Switch">
+          <span slot="center">开关组件</span>
+          <i class="iconfont" slot="left-icon">&#xe62d;</i>
+          <i class="iconfont" slot="right-icon">&#xe93d;</i>
+        </cell>
+        <cell url="/demo/tcell" title="Cell">
+          <span slot="center">list组件</span>
           <i class="iconfont" slot="left-icon">&#xe62d;</i>
           <i class="iconfont" slot="right-icon">&#xe93d;</i>
         </cell>
