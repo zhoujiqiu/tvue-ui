@@ -9,7 +9,9 @@ import Toast from './demos/toast.vue'
 import Dialog from './demos/dialog.vue'
 import Search from './demos/search.vue'
 import Tab from './demos/tabbar.vue'
+import DatetimePicker from './demos/datetimePicker.vue'
 import Checklist from './demos/checklist.vue'
+import Pulldown from './demos/Pulldown.vue'
 import Loading from './demos/loading.vue'
 import Radio from './demos/radio.vue'
 Vue.use(Router)
@@ -26,7 +28,9 @@ router.map({
   'demo/dialog': {component: Dialog, name: 'dialog'},
   'demo/search': {component: Search, name: 'search'}
   'demo/tab': {component: Tab, name: 'tab'},
+  'demo/datetimePicker': {component: DatetimePicker, name: 'datetimePicker'},
   'demo/checklist': {component: Checklist, name: 'checklist'},
+  'demo/pulldown': {component: Pulldown, name: 'pulldown'},
   'demo/loading': {component: Loading, name: 'loading'},
   'demo/radio': {component: Radio, name: 'radio'}
 })

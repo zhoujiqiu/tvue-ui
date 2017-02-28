@@ -36,7 +36,6 @@ export default {
 </script>
 <style>
 .m-button{
-  margin: 10px auto;
   position: relative;
   width: 100%;
   border: none;
@@ -50,19 +49,22 @@ export default {
   &--default{
     background-color: #3395ff;
     color: #fff;
-    height: 44px;   
+    height: 44px; 
+    line-height: 44px;   
     font-size: 17px;    
   }
   &--blue{
     background-color: #3395ff;
     color: #fff;
-    height: 39px;   
+    height: 39px;
+    line-height: 39px;   
     font-size: 17px; 
   }
   &--red{
     background-color: #FF5A5F;
     color: #fff;
-    height: 39px;   
+    height: 39px;
+    line-height: 39px;    
     font-size: 17px;  
   }
   &--plain--default{
