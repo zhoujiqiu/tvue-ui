@@ -13,6 +13,7 @@
         <ul class="date">
           <li v-for="item in calendar.dateList" :class="elementClass($index)" @click="onDateClick($index)">
             <span v-if="item.numText" v-html="item.numText"></span>
+            <i v-if="item.isBegin"></i>
           </li>             
         </ul>
       </div>
@@ -197,8 +198,8 @@
         // console.log(JSON.parse(JSON.stringify(this.calendar.dateList[index])))
       },
       close () {
-        console.log('hideTimePicker') // this.$emit('hideTimePicker')
-        this.$dispatch('hideTimePicker', this.timpSpan)
+        // console.log('hideCalendar') // this.$emit('hideTimePicker')
+        this.$dispatch('hideCalendar', this.timpSpan)
       },
       confirm () {
         if (!this.timpSpan.fromDate) {
@@ -210,12 +211,12 @@
           this.timpSpan.toUtcTime = this.timpSpan.fromUtcTime
         }
         if (this.timpSpan.fromDate && this.timpSpan.toDate) {
-          console.log('hideTimePicker') // this.$emit('hideTimePicker')
-          this.$dispatch('hideTimePicker', this.timpSpan)
+          // console.log('hideCalendar') // this.$emit('hideTimePicker')
+          this.$dispatch('hideCalendar', this.timpSpan)
         }
       },
       openDialog (cont, type) {
-        this.$dispatch('report', {cont: cont, type: type})
+        console.log('report', {cont: cont, type: type})
       }
     }
   }
@@ -242,8 +243,9 @@
       background-color: #199ADD;
     }
     .timepicker_info .date{ margin: 0 auto; overflow: hidden; width: 91.5%; text-align: center;}
-    .timepicker_info .date li{ display: table-cell; float: left; width: 14.28%; height: 44px; }
-    .timepicker_info .date li span{display: block; font-size: 14px; color: #000; line-height: 44px; width: 44px; margin: 0 auto;}
+    .timepicker_info .date li{ display: table-cell; float: left; width: 14.28%; height: 44px; position: relative;}
+    .timepicker_info .date li i{ position: absolute; bottom: 5px; display: block; width: 4px; height: 4px; background: #fff; border-radius: 100%; left:50%; transform: translateX(-50%);}
+    .timepicker_info .date li span{display: block; font-size: 14px; color: #000; line-height: 44px; width: 44px; margin: 0 auto; }
     .timepicker_info .date li.weekday{ }
     .timepicker_info .date li.weekday span{ color: #fff; }
     .timepicker_info .date li.preMonth{ }

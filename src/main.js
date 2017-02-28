@@ -10,6 +10,7 @@ import Dialog from './demos/dialog.vue'
 import Search from './demos/search.vue'
 import Tab from './demos/tabbar.vue'
 import DatetimePicker from './demos/datetimePicker.vue'
+import Pullup from './demos/pullup.vue'
 import Checklist from './demos/checklist.vue'
 import Pulldown from './demos/Pulldown.vue'
 import Loading from './demos/loading.vue'
@@ -37,6 +38,7 @@ router.map({
   'demo/search': {component: Search, name: 'search'},
   'demo/tab': {component: Tab, name: 'tab'},
   'demo/datetimePicker': {component: DatetimePicker, name: 'datetimePicker'},
+  'demo/pullup': {component: Pullup, name: 'pullup'},
   'demo/checklist': {component: Checklist, name: 'checklist'},
   'demo/pulldown': {component: Pulldown, name: 'pulldown'},
   'demo/loading': {component: Loading, name: 'loading'},
