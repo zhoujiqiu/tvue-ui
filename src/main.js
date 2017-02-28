@@ -26,7 +26,7 @@ router.map({
   'demo/button': {component: Button, name: 'button'},
   'demo/toast': {component: Toast, name: 'toast'},
   'demo/dialog': {component: Dialog, name: 'dialog'},
-  'demo/search': {component: Search, name: 'search'}
+  'demo/search': {component: Search, name: 'search'},
   'demo/tab': {component: Tab, name: 'tab'},
   'demo/datetimePicker': {component: DatetimePicker, name: 'datetimePicker'},
   'demo/checklist': {component: Checklist, name: 'checklist'},
