@@ -27,6 +27,11 @@
           <i class="iconfont" slot="left-icon">&#xe62d;</i>
           <i class="iconfont" slot="right-icon">&#xe93d;</i>
         </cell>
+        <cell url="/demo/lazyload" title="Lazyload">
+          <span slot="center">图片懒加载</span>
+          <i class="iconfont" slot="left-icon">&#xe62d;</i>
+          <i class="iconfont" slot="right-icon">&#xe93d;</i>
+        </cell>
         <cell url="/demo/button" title="Button">
           <span slot="center">按钮组件</span>
           <i class="iconfont" slot="left-icon">&#xe62d;</i>
@@ -54,6 +59,11 @@
         </cell>
         <cell url="/demo/tcell" title="Cell">
           <span slot="center">list组件</span>
+          <i class="iconfont" slot="left-icon">&#xe62d;</i>
+          <i class="iconfont" slot="right-icon">&#xe93d;</i>
+        </cell>
+        <cell url="/demo/search" title="Search">
+          <span slot="center">搜索框组件</span>
           <i class="iconfont" slot="left-icon">&#xe62d;</i>
           <i class="iconfont" slot="right-icon">&#xe93d;</i>
         </cell>

@@ -17,9 +17,12 @@ import Radio from './demos/radio.vue'
 import Field from './demos/field.vue'
 import Switch from './demos/switch.vue'
 import Tcell from './demos/tcell.vue'
+import Lazyload from './demos/lazyload.vue'
 
+import VueLazyload from './components/Lazyload/index.js'
 
 Vue.use(Router)
+Vue.use(VueLazyload)
 Vue.config.debug = false
 Vue.config.devtools = false
 Vue.config.silent = true
@@ -40,6 +43,7 @@ router.map({
   'demo/field': {component: Field, name: 'field'},
   'demo/switch': {component: Switch, name: 'switch'},
   'demo/tcell': {component: Tcell, name: 'tcell'},
+  'demo/lazyload': {component: Lazyload, name: 'lazyload'},
   'demo/radio': {component: Radio, name: 'radio'}
 })
 /* eslint-disable no-new */
