@@ -1,12 +1,12 @@
 <template>
-  <div class="tn-cell-wrapper tn-checklist" :class="{ 'is-limit': max <= value.length }">
+  <div class="tn-cell-wrapper tn-checklist" :class="{ 'is-limit': max <= options.hasChecked.length }">
     <div>
       <label class="tn-checklist__title" v-text="title" ></label>
     </div>
-      <label  v-for="option in options" class="tn-checklist__label">
-        <span v-if="option.value=='选中禁用的值'" :class="{'is-right': align === 'right'}" class="tn-checkbox">
+      <label  v-for="option in options.optionList" class="tn-checklist__label">
+        <span v-if="options.hasChecked.includes(option.value)" :class="{'is-right': align === 'right'}" class="tn-checkbox">
           <input type="checkbox" class="tn-checkbox__input" 
-          v-model="checkedNames"
+          v-model="options.hasChecked"
           checked="checked"
           :disabled="option.disabled" 
           :value="option.value || option" >
@@ -15,7 +15,7 @@
         <!---->
         <span v-else :class="{'is-right': align === 'right'}" class="tn-checkbox">
           <input type="checkbox" class="tn-checkbox__input"
-          v-model="checkedNames"
+          v-model="options.hasChecked"
           :disabled="option.disabled" 
           :value="option.value || option">
           <span class='tn-checkbox__core' :class="{'tn-checkbox__checked':ischeck}"></span>
@@ -23,8 +23,6 @@
         <!---->
         <span class="tn-checkbox__label" v-text="option.label || option"></span>
       </label>
-      <!-- <div v-text="title">ffff</div> -->
-        <div v-ref="one">已选中：{{checkedNames}}</div>
   </div>   
 </template>
 
@@ -33,20 +31,23 @@
  * mt-checklist
  * @module components/checklist
  *
- * @param {(string[]|object[])} options - 选项数组，可以传入 [{label: 'label', value: 'value', disabled: true}] 或者 ['ab', 'cd', 'ef']
- * @param {string[]} value - 选中值的数组
+ * @param {(string[]|object[])} options.optionList - 选项数组，可以传入 [{label: 'label', value: 'value', disabled: true}] 或者 ['ab', 'cd', 'ef']
+ * @param {string[]} options.hasChecked - 选中值的数组
  * @param {string} title - 标题
  * @param {number} [max] - 最多可选的个数
  * @param {string} [align=left] - checkbox 对齐位置，`left`, `right`
  *
  *
  * @example
- * <mt-checklist :value.sync="value" :options="['a', 'b', 'c']"></mt-checklist>
+ * <mt-checklist :value.sync="value" :options="options"></mt-checklist>
+ options3 = {
+    hasChecked: ['选项A2'], // 选中的值，与optionList中的value相同即为选中
+    optionList: ['选项A2', '选项B2', '选项C2', '选项D2']
+  }
  */
 export default {
   // name: 'tn-checklist',
   ready() {
-    console.log('eee', this.checkedValue)
   },
   props: {
     checkedValue: Array,
@@ -54,14 +55,14 @@ export default {
     title: String,
     align: String,
     options: {
-      type: Array,
+      type: Object,
       required: true
-    },
-    value: Array
+    }
+    // value: Array
   },
   data() {
     return {
-      checkedNames: [],
+      checkedNames: this.options.hasChecked,
       ischeck: false
     };
   },
@@ -71,20 +72,22 @@ export default {
 
   computed: {
     limit() {
-      return this.max < this.value.length;
+      debugger
+      console.log(this.max < this.options.hasChecked.length)
+      return this.max < this.value.length
     }
   },
 
   watch: {
     value() {
       if (this.limit) {
-        this.value.pop();
+        this.value.pop()
       }
     }
   },
   methods: {
-    checkedFn() {
-      this.ischeck = true
+    clickCheck() {
+      console.log(this.options.hasChecked.length)
     }
   }
 };
@@ -113,7 +116,7 @@ export default {
       }
 
       @when limit {
-        .tn-checkbox-core:not(:checked) {
+        .tn-checkbox__core:not(:checked) {
           background-color: #ccc;
           border-color: #ccc;
         }
@@ -171,16 +174,6 @@ export default {
           transition: transform .2s;
         }
       }
-      /*@descendent checked{
-            background-color: #26a2ff;
-            border-color: #26a2ff;
-
-            &::after {
-              background:#fff;
-              border-color: #fff;
-              transform: rotate(45deg) scale(1);
-            }
-          }*/
     }
   }
 </style>
