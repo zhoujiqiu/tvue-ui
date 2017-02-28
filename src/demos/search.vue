@@ -2,7 +2,7 @@
 <c-search v-bind:datas="searchDates"></c-search> 
 </template>
 <script>
-import cSearch from '../components/Search/index.vue'
+import cSearch from '../components/Search/index.js'
 export default {
   ready: function () {},
   data () {
