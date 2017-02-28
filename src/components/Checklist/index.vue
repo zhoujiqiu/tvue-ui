@@ -6,24 +6,25 @@
       <label  v-for="option in options" class="tn-checklist__label">
         <span v-if="option.value=='选中禁用的值'" :class="{'is-right': align === 'right'}" class="tn-checkbox">
           <input type="checkbox" class="tn-checkbox__input" 
-          v-model="value"
+          v-model="checkedNames"
           checked="checked"
           :disabled="option.disabled" 
-          :value="option.value || option" 
-          @click="checkedFn">
+          :value="option.value || option" >
           <span class='tn-checkbox__core' :class="{'tn-checkbox__checked':ischeck}"></span>
         </span>
         <!---->
         <span v-else :class="{'is-right': align === 'right'}" class="tn-checkbox">
-          <input type="checkbox" class="tn-checkbox__input" 
+          <input type="checkbox" class="tn-checkbox__input"
+          v-model="checkedNames"
           :disabled="option.disabled" 
-          :value="option.value || option" 
-          @click="checkedFn">
+          :value="option.value || option">
           <span class='tn-checkbox__core' :class="{'tn-checkbox__checked':ischeck}"></span>
         </span>
         <!---->
         <span class="tn-checkbox__label" v-text="option.label || option"></span>
       </label>
+      <!-- <div v-text="title">ffff</div> -->
+        <div v-ref="one">已选中：{{checkedNames}}</div>
   </div>   
 </template>
 
@@ -45,9 +46,10 @@
 export default {
   // name: 'tn-checklist',
   ready() {
-    console.log(this.value2)
+    console.log('eee', this.checkedValue)
   },
   props: {
+    checkedValue: Array,
     max: Number,
     title: String,
     align: String,
@@ -59,6 +61,7 @@ export default {
   },
   data() {
     return {
+      checkedNames: [],
       ischeck: false
     };
   },
@@ -67,23 +70,20 @@ export default {
   },
 
   computed: {
-    // limit() {
-    //   debugger
-    //   return this.max < this.value.length;
-    // }
+    limit() {
+      return this.max < this.value.length;
+    }
   },
 
   watch: {
-    // value() {
-    //   debugger
-    //   if (this.limit) {
-    //     this.value.pop();
-    //   }
-    // }
+    value() {
+      if (this.limit) {
+        this.value.pop();
+      }
+    }
   },
   methods: {
     checkedFn() {
-
       this.ischeck = true
     }
   }
@@ -131,7 +131,7 @@ export default {
       }
 
       @descendent input {
-        display: none;
+        display: nonde;
         &:checked {
           + .tn-checkbox__core {
             background-color: #26a2ff;

@@ -1,57 +1,23 @@
 <template>
   <div class="dialog-demo">
     <div class="des">Checklist</div>
-    <t-checklist
-      class="page-part"
-      title="复选框列表"
-      v-model="value1"
-      :options="options1">
-    </t-checklist>
-    <div title="选中的项">选中的项:{{ value1 }}
-    </div>
-    <t-checklist
-      class="page-part"
-      title="第二个复选框列表"
-      v-model="value2"
-      :options="options2">
-    </t-checklist>
-    <div title="选中的项">选中的项:{{ value2 }}
-    </div>
-    <t-checklist
-      class="page-part"
-      title="最多选两个"
-      :max="2"
-      v-model="value3"
-      :options="options3">
-    </t-checklist>
-    <div title="选中的项">选中的项:{{ value3 }}
-    </div>
-    <t-checklist
-      align="right"
-      class="page-part"
-      title="右对齐"
-      v-model="value4"
-      :options="options4">
-    </t-checklist>
-    <div title="选中的项">选中的项:{{ value4 }}
-    </div>
+    <t-pulldown :list="list">
+    </t-pulldown>
+   </div>
   </div>
 </template>
 <script>
 import MButton from '../components/MButton/index.vue'
-import TChecklist from '../components/Checklist/index.vue'
+import TPulldown from '../components/Pulldown/index.vue'
 export default {
   // name: 'page-checklist',
   data() {
     return {
-      value1: [],
-      value2: ['选中禁用的值','值F'],
-      value3: ['选项A'],
-      value4: []
+      list: ['选中禁用的值','值F']
     };
   },
   components: {
-    TChecklist
+    TPulldown
   },
   created() {
     this.options1 = ['选项A', '选项B', '选项C'];

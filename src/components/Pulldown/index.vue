@@ -1,186 +1,98 @@
 <template>
-  <div class="tn-cell-wrapper tn-checklist" :class="{ 'is-limit': max <= value.length }">
-    <div>
-      <label class="tn-checklist__title" v-text="title" ></label>
+  <div class="page-loadmore">
+    <p class="page-loadmore-desc">在列表顶端, 按住 - 下拉 - 释放可以获取更多数据</p>
+    <p class="page-loadmore-desc">此例请使用手机查看</p>
+    <div class="page-loadmore-wrapper" ref="wrapper" :style="{ height: wrapperHeight + 'px' }">
+      <div :top-method="loadTop" @top-status-change="handleTopChange" ref="loadmore">
+        <ul class="page-loadmore-list">
+          <li v-for="item in list" class="page-loadmore-listitem">{{ item }}</li>
+        </ul>
+        <div slot="top" class="mint-loadmore-top">
+          <span v-show="topStatus !== 'loading'" :class="{ 'is-rotate': topStatus === 'drop' }">↓</span>
+          <span v-show="topStatus === 'loading'">
+            <mt-spinner type="snake"></mt-spinner>
+          </span>
+        </div>
+      </div>
     </div>
-      <label  v-for="option in options" class="tn-checklist__label">
-        <span v-if="option.value=='选中禁用的值'" :class="{'is-right': align === 'right'}" class="tn-checkbox">
-          <input type="checkbox" class="tn-checkbox__input" 
-          v-model="value"
-          checked="checked"
-          :disabled="option.disabled" 
-          :value="option.value || option" 
-          @click="checkedFn">
-          <span class='tn-checkbox__core' :class="{'tn-checkbox__checked':ischeck}"></span>
-        </span>
-        <!---->
-        <span v-else :class="{'is-right': align === 'right'}" class="tn-checkbox">
-          <input type="checkbox" class="tn-checkbox__input" 
-          :disabled="option.disabled" 
-          :value="option.value || option" 
-          @click="checkedFn">
-          <span class='tn-checkbox__core' :class="{'tn-checkbox__checked':ischeck}"></span>
-        </span>
-        <!---->
-        <span class="tn-checkbox__label" v-text="option.label || option"></span>
-      </label>
-  </div>   
+  </div>
 </template>
 
-<script>
-/**
- * mt-checklist
- * @module components/checklist
- *
- * @param {(string[]|object[])} options - 选项数组，可以传入 [{label: 'label', value: 'value', disabled: true}] 或者 ['ab', 'cd', 'ef']
- * @param {string[]} value - 选中值的数组
- * @param {string} title - 标题
- * @param {number} [max] - 最多可选的个数
- * @param {string} [align=left] - checkbox 对齐位置，`left`, `right`
- *
- *
- * @example
- * <mt-checklist :value.sync="value" :options="['a', 'b', 'c']"></mt-checklist>
- */
-export default {
-  // name: 'tn-checklist',
-  ready() {
-    console.log(this.value2)
-  },
-  props: {
-    max: Number,
-    title: String,
-    align: String,
-    options: {
-      type: Array,
-      required: true
-    },
-    value: Array
-  },
-  data() {
-    return {
-      ischeck: false
-    };
-  },
-  components: {
-    // XCell
-  },
-
-  computed: {
-    // limit() {
-    //   debugger
-    //   return this.max < this.value.length;
-    // }
-  },
-
-  watch: {
-    // value() {
-    //   debugger
-    //   if (this.limit) {
-    //     this.value.pop();
-    //   }
-    // }
-  },
-  methods: {
-    checkedFn() {
-
-      this.ischeck = true
+<style>
+  @component-namespace page {
+    @component loadmore {
+      @descendent desc {
+        text-align: center;
+        color: #666;
+        padding-bottom: 5px;
+        &:last-of-type {
+          border-bottom: solid 1px #eee;
+        }
+      }
+      @descendent listitem {
+        height: 50px;
+        line-height: 50px;
+        border-bottom: solid 1px #eee;
+        text-align: center;
+        &:first-child {
+          border-top: solid 1px #eee;
+        }
+      }
+      @descendent wrapper {
+        margin-top: -1px;
+        overflow: scroll;
+      }
+      .mint-spinner {
+        display: inline-block;
+        vertical-align: middle;
+      }
     }
   }
-};
-</script>
-
-<style lang="css">
-  @component-namespace tn {
-    @component checklist {
-      background:#fff;
-      padding:10px;
-      .tn-cell {
-        padding: 0;
+  @component mint-loadmore-top {
+    span {
+      display: inline-block;
+      transition: .2s linear;
+      vertical-align: middle;
+      @when rotate {
+        transform: rotate(180deg);
       }
-
-      @descendent label {
-        display: block;
-        padding: 0 10px;
-        height:34px;
-      }
-
-      @descendent title {
-        color: #999;
-        display: block;
-        font-size: 12px;
-        margin: 8px;
-      }
-
-      @when limit {
-        .tn-checkbox-core:not(:checked) {
-          background-color: #ccc;
-          border-color: #ccc;
-        }
-      }
-    }
-
-    @component checkbox {
-      @when right {
-        float: right;
-      }
-
-      @descendent label {
-        vertical-align: middle;
-        margin-left: 6px;
-      }
-
-      @descendent input {
-        display: none;
-        &:checked {
-          + .tn-checkbox__core {
-            background-color: #26a2ff;
-            border-color: #26a2ff;
-
-            &::after {
-              /*background:#fff;*/
-              border-color: #fff;
-              transform: rotate(45deg) scale(1);
-            }
-          }
-        }
-
-        &[disabled] + .tn-checkbox__core {
-          background-color: #ccc;
-          border-color: #ccc;
-        }
-      }
-
-      @descendent core {
-        display: inline-block;
-        background-color: #fff;
-        border-radius: 100%;
-        border: 1px solid #ccc;
-        position: relative;
-        size: 20px;
-        vertical-align: middle;
-
-        &::after {
-          border: 2px solid transparent;
-          border-left: 0;
-          border-top: 0;
-          content: " ";
-          position: absolute 3px * * 6px;
-          size: 4px 8px;
-          transform: rotate(45deg);
-          transition: transform .2s;
-        }
-      }
-      /*@descendent checked{
-            background-color: #26a2ff;
-            border-color: #26a2ff;
-
-            &::after {
-              background:#fff;
-              border-color: #fff;
-              transform: rotate(45deg) scale(1);
-            }
-          }*/
     }
   }
 </style>
+
+<script type="text/babel">
+  export default {
+    props: {
+      list: Array
+    },
+    data() {
+      return {
+        list: [],
+        topStatus: '',
+        wrapperHeight: 0
+      };
+    },
+    methods: {
+      handleTopChange(status) {
+        this.topStatus = status;
+      },
+      loadTop() {
+        setTimeout(() => {
+          let firstValue = this.list[0];
+          for (let i = 1; i <= 10; i++) {
+            this.list.unshift(firstValue - i);
+          }
+          this.$refs.loadmore.onTopLoaded();
+        }, 1500);
+      }
+    },
+    created() {
+      for (let i = 1; i <= 20; i++) {
+        this.list.push(i);
+      }
+    },
+    mounted() {
+      this.wrapperHeight = document.documentElement.clientHeight - this.$refs.wrapper.getBoundingClientRect().top;
+    }
+  };
+</script>
