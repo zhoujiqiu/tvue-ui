@@ -8,7 +8,6 @@
           <li v-for="item in list" class="page-loadmore__listitem">{{ item }}</li>
         </ul>
         <div slot="bottom" class="toon-loadmore__bottom">
-          <!-- <span v-show="bottomStatus !== 'loading'" :class="{ 'is-rotate': bottomStatus === 'drop' }">↑</span> -->
           <span v-show="bottomStatus === 'loading'">
             <div>加载中...</div>
           </span>
