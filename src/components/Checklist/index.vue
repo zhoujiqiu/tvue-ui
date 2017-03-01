@@ -25,7 +25,6 @@
       </label>
   </div>   
 </template>
-
 <script>
 /**
  * mt-checklist
@@ -48,7 +47,7 @@
 export default {
   // name: 'tn-checklist',
   ready() {
-  },
+   },
   props: {
     checkedValue: Array,
     max: Number,
@@ -69,7 +68,6 @@ export default {
   components: {
     // XCell
   },
-
   computed: {
     limit() {
       debugger
@@ -77,7 +75,6 @@ export default {
       return this.max < this.value.length
     }
   },
-
   watch: {
     value() {
       if (this.limit) {
@@ -92,7 +89,6 @@ export default {
   }
 };
 </script>
-
 <style lang="css">
   @component-namespace tn {
     @component checklist {

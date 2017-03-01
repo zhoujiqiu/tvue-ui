@@ -1,14 +1,12 @@
 <template>
   <div class="page-loadmore">
-    <p class="page-loadmore-desc">在列表顶端, 按住 - 下拉 - 释放可以获取更多数据</p>
-    <p class="page-loadmore-desc">此例请使用手机查看</p>
     <div class="page-loadmore-wrapper" ref="wrapper" :style="{ height: wrapperHeight + 'px' }">
       <div :top-method="loadTop" @top-status-change="handleTopChange" ref="loadmore">
         <ul class="page-loadmore-list">
           <li v-for="item in list" class="page-loadmore-listitem">{{ item }}</li>
         </ul>
         <div slot="top" class="mint-loadmore-top">
-          <span v-show="topStatus !== 'loading'" :class="{ 'is-rotate': topStatus === 'drop' }">↓</span>
+          <span v-show="topStatus !== 'loading'" :class="{ 'is-rotate': topStatus === 'drop' }"></span>
           <span v-show="topStatus === 'loading'">
             <mt-spinner type="snake"></mt-spinner>
           </span>
@@ -17,7 +15,6 @@
     </div>
   </div>
 </template>
-
 <style>
   @component-namespace page {
     @component loadmore {
@@ -65,11 +62,14 @@
     props: {
       list: Array
     },
+    ready() {
+     console.log(this.$refs)
+    },
     data() {
       return {
         list: [],
         topStatus: '',
-        wrapperHeight: 0
+        wrapperHeight: document.documentElement.clientHeight - 20
       };
     },
     methods: {
@@ -87,12 +87,13 @@
       }
     },
     created() {
-      for (let i = 1; i <= 20; i++) {
+      for (let i = 1; i <= 15; i++) {
         this.list.push(i);
       }
     },
     mounted() {
       this.wrapperHeight = document.documentElement.clientHeight - this.$refs.wrapper.getBoundingClientRect().top;
+      console.log(this.wrapperHeight)
     }
   };
 </script>

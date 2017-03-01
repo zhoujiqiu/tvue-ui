@@ -11,12 +11,12 @@
       title="第二个复选框列表"
       :options="options2">
     </t-checklist>
-    <t-checklist
+    <!-- <t-checklist
       class="page-part"
       title="最多选两个"
       :max="2"
       :options="options3">
-    </t-checklist>
+    </t-checklist> -->
     <t-checklist
       align="right"
       class="page-part"
