@@ -20,10 +20,11 @@
       slots.forEach(function(slot) {
         if (!slot.divider) {
           slot.valueIndex = valueIndexCount++;
-          values[slot.valueIndex] = (slot.values || [])[slot.defaultIndex || 3];
+          /*values[slot.valueIndex] = (slot.values || [])[slot.defaultIndex || 3];*/
+          values[slot.valueIndex] = slot.value;
         }
       });
-      console.log(this.values)
+      // console.log(this.values)
     },    
     components: {
       pickerSlot
@@ -61,6 +62,28 @@
       }
     },
     methods: {
+      getSlot(slotIndex) {
+        var slots = this.slots || [];
+        var count = 0;
+        var target;
+        var children = this.$children;
+
+        slots.forEach(function(slot, index) {
+          if (!slot.divider) {
+            if (slotIndex === count) {
+              target = children[index];
+            }
+            count++;
+          }
+        });
+        return target;
+      },
+      setSlotValue(index, value) {
+        var slot = this.getSlot(index);
+        if (slot) {
+          slot.value = value;
+        }
+      }
     }
   }
 </script>

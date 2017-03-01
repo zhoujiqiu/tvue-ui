@@ -18,8 +18,10 @@
   const ITEM_HEIGHT = 30;
   export default {
     ready: function () {
-      this.initEvents()
-      // this.doOnValueChange()
+      if (!this.divider) {
+        this.initEvents();
+        this.doOnValueChange();
+      }
     },
     props: {
       values: {
@@ -30,10 +32,6 @@
       },
       value: {
       },
-      valIndex: {
-        type: Number,
-        default: 3
-      },
       visibleItemCount: {
         type: Number,
         default: 7
@@ -42,11 +40,10 @@
         type: String
       }
     },
-    data () {
-      return {
-      }
-    },
     computed: {
+      valueIndex() {
+        return this.values.indexOf(this.value);
+      },
       dragRange () {
         var values = this.values
         var visibleItemCount = this.visibleItemCount
@@ -54,18 +51,27 @@
       }
     },
     watch: {
+      values(newVal) {
+        if (this.valueIndex === -1) {
+          this.value = (newVal || [])[0];
+        }
+        if (this.rotateEffect) {
+          Vue.nextTick(() => {
+            this.doOnValuesChange();
+          });
+        }
+      },    
       value() {
         this.doOnValueChange()
         if (this.rotateEffect) {
           this.planUpdateRotate
         }
-        console.log('valueChanged', this.value, this.valIndex)
         this.$dispatch('slotValueChanged', this)
       }
     },
     methods: {
       setStyle (index) {
-        var diff = Math.abs(index - this.valIndex)
+        var diff = Math.abs(index - this.valueIndex)
         var fontSize = (diff - 1) > -1 ? (diff - 1) : 0
         fontSize *= diff
         fontSize = diff < 5 ? (21 - fontSize) : 15
@@ -77,14 +83,12 @@
         var offset = Math.floor(this.visibleItemCount / 2)
 
         if (valueIndex !== -1) {
-          this.valIndex = valueIndex
           return (valueIndex - offset) * -ITEM_HEIGHT
         }
       },
       translate2Value (translate) {
         translate = Math.round(translate / ITEM_HEIGHT) * ITEM_HEIGHT;
         var index = -(translate -  ITEM_HEIGHT * Math.floor(this.visibleItemCount / 2)) / ITEM_HEIGHT;
-        this.valIndex = index
         return this.values[index];
       },
       doOnValueChange () {
