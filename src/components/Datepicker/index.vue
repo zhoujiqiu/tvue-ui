@@ -17,7 +17,16 @@
   };
   export default {
     created: function () {
-      this.generateSlots_Old();
+      /*this.generateSlots_Old();*/
+      if (!this.value) {
+        if (this.type.indexOf('date') > -1) {
+          // this.value = this.startDate;
+          this.value = new Date()
+        } else {
+          this.value = `${ ('0' + this.startHour).slice(-2) }:00`;
+        }
+      }
+      this.generateSlots();
     },
     components: {
       picker
@@ -110,6 +119,13 @@
     watch: {
       value() {
         this.handleExceededValue();
+      },
+      rims(val, oldVal) {
+        let same = Object.keys(val).every(key => val[key][0] === oldVal[key][0] &&
+          val[key][1] === oldVal[key][1]);
+        if (!same) {
+          this.generateSlots();
+        }
       }
     },
     methods: {
@@ -164,6 +180,7 @@
           this.selfTriggered = false;
           return;
         }
+        // console.log('aaa', values)
         this.value = this.getValue(values);
       },
       close () {
@@ -217,6 +234,7 @@
               values[index] = slotValues[0];
             }
           });
+        /// console.log('bbb', values)
         this.$nextTick(() => {
           this.setSlotsByValues(values);
         });
@@ -272,10 +290,25 @@
           H: this.rims.hour,
           m: this.rims.min
         };
+        const SUFFIX_MAP = {
+          Y: '年',
+          M: '月',
+          D: '日',
+          H: '时',
+          m: '分'
+        }
+        let VAL_MAP = {
+          Y: this.value.getFullYear(),
+          M: this.value.getMonth() + 1,
+          D: this.value.getDate(),
+          H: this.value.getHours(),
+          m: this.value.getMinutes()
+        }
+        // console.log('VAL_MAP', VAL_MAP)
         let typesArr = this.typeStr.split('');
         typesArr.forEach(type => {
           if (INTERVAL_MAP[type]) {
-            this.pushSlots.apply(null, [dateSlots, type].concat(INTERVAL_MAP[type]));
+            this.pushSlots.apply(null, [dateSlots, type, SUFFIX_MAP[type], VAL_MAP[type]].concat(INTERVAL_MAP[type]));
           }
         });
         if (this.typeStr === 'Hm') {
@@ -285,11 +318,14 @@
           });
         }
         this.dateSlots = dateSlots;
+        // console.log('this.dateSlots', JSON.parse(JSON.stringify(this.dateSlots)))
         this.handleExceededValue();
       },
-      pushSlots(slots, type, start, end) {
+      pushSlots(slots, type, suffix, val, start, end) {
         slots.push({
           /*flex: 1,*/
+          value: val,
+          suffix: suffix,
           values: this.fillValues(type, start, end)
         });
       },
@@ -301,7 +337,7 @@
           } else {
             values.push(this[`${FORMAT_MAP[type]}Format`].replace('{value}', i));
           }*/
-          values.push(this[`${FORMAT_MAP[type]}Format`].replace('{value}', i));
+          values.push(i);
         }
         return values;
       },
