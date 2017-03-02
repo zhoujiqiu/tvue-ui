@@ -1,125 +1,44 @@
 <template>
-<div class="tab-container">
-  <div class="tn-tabbar is-fixed">
-   <a class="tn-tab-item">
-    <div class="tn-tab-item-icon">icon
-    </div>
-    <div class="tn-tab-item-icon">月度</div>
-   </a>
-   <a class="tn-tab-item is-selected">
-    <div class="tn-tab-item-icon">icon
-    </div>
-    <div class="tn-tab-item-icon">季度</div>
-   </a>
-   <a class="tn-tab-item">
-    <div class="tn-tab-item-icon">icon
-    </div>
-    <div class="tn-tab-item-icon">年度</div>
-   </a>
+  <div class="tabBar-demo">
+    <div class="des">tabbar</div>
+    <t-tabbar v-bind:tabs='tabs'></t-tabbar> 
   </div>
-  <div class="tn-tab-container-item">
-    <a class="tn-cell">季度</a>
-  </div>
-</div>
-</template>
-<style>
-.tab-container{
-  position: relative;
-}
-.tn-tabbar {
-    background-image: -webkit-l inear-gradient(top,#d9d9d9,#d9d9d9 50%,transparent 0);
-    background-image: linear-gradient(180deg,#d9d9d9,#d9d9d9 50%,transparent 0);
-    background-size: 100% 1px;
-    background-repeat: no-repeat;
-    background-position: 0 0;
-    /*position: relative;*/
-    background-color: #fafafa;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    /*right: 0;*/
-    /*bottom: 0;*/
-    left: 0;
-    /*position: absolute;*/
-    text-align: center;
-}
-.tn-tabbar.is-fixed {
-    right: 0;
-    /*bottom: 0;*/
-    /*left: 0;*/
-    /*position: fixed;*/
-    /*z-index: 1;*/
-}
-.tn-tab-item {
-    display: block;
-    padding: 10px;
-    -webkit-box-flex: 1;
-    -ms-flex: 1;
-    flex: 1;
-    text-decoration: none;
-}
-.tn-tab-item-icon {
-    width: 24px;
-    height: 24px;
-    margin: 0 auto 5px;
-}
-.tn-tab-item-label {
-    color: inherit;
-    font-size: 12px;
-    line-height: 1;
-}
-.tn-tabbar>.tn-tab-item.is-selected {
-    background-color: #eaeaea;
-    color: #26a2ff;
-}
-.tn-tab-container-item {
-    color:#000;
-    padding: 10px;
-    -ms-flex-negative: 0;
-    flex-shrink: 0;
-    width: 100%;
-    /*position: absolute;*/
-    top: 75px;
-    /*z-index:99;*/
-
-}
-</style>
-<!-- <template>
-  <div class="el-tabs__active-bar" :style="barStyle">eeee</div>
 </template>
 <script>
-  export default {
-    name: 'TabBar',
-    props: {
-      tabs: Array
-    },
-    computed: {
-      barStyle: {
-        cache: false,
-        get() {
-          if (!this.$parent.$refs.tabs) return {};
-          let style = {};
-          let offset = 0;
-          let tabWidth = 0;
-          this.tabs.every((tab, index) => {
-            let $el = this.$parent.$refs.tabs[index];
-            if (!$el) { return false; }
-            if (!tab.active) {
-              offset += $el.clientWidth;
-              return true;
-            } else {
-              tabWidth = $el.clientWidth;
-              return false;
-            }
-          });
-          const transform = `translateX(${offset}px)`;
-          style.width = tabWidth + 'px';
-          style.transform = transform;
-          style.msTransform = transform;
-          style.webkitTransform = transform;
-          return style;
-        }
+import TTabbar from '../components/Tabbar/index.vue'
+export default {
+  ready: function () {
+    // this.tabs.isSelectCon.splice(0, 1, 'ready') // 只是其中的一个方法
+  },
+  data () {
+    return {
+      tabs:{
+        fixed: false, // 默认不传是false,true是固底
+        isSelect: 0, // 第几个选中，默认不传0开始计
+        isSelectCon: ['我初始化的年度内容', '我初始化的月度内容', '我初始化的季度内容'], // 选中的内容数组，无内容为空
+        tabList: ['年度', '月度', '季度'] // tab的title值数组，默认无值
       }
     }
-  };
-</script> -->
+  },
+  components: {
+    TTabbar
+  },
+  events: {
+    tabChange: function (index) {
+      let j = parseInt(index) // 注意，需转化为整数
+      this.tabs.isSelectCon.splice(j, 1, '我可以是post请求回来的数据哟'+j) // 只是其中的一个方法
+    }
+  },
+  methods: {
+  }
+}
+</script>
+<style>
+.toast-demo{
+  padding:0 30px;
+}
+.des {
+  text-align: center;
+  font-size: 18px;
+}
+</style>
