@@ -199,7 +199,8 @@
       },
       close () {
         // console.log('hideCalendar') // this.$emit('hideTimePicker')
-        this.$dispatch('hideCalendar', this.timpSpan)
+        let d = this.timpSpan.fromUtcTime ? new Date(this.timpSpan.fromUtcTime) : null
+        this.$dispatch('hideCalendar', d)
       },
       confirm () {
         if (!this.timpSpan.fromDate) {

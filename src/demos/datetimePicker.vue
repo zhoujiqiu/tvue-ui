@@ -44,14 +44,13 @@ export default {
     hidePicker: function (data) {
       this.pickerShow = false
       if (data) {
-        let d = new Date(data)
-        alert(d.getFullYear() + '年' + (d.getMonth() + 1) + '月' + d.getDate() + '日')
+        alert(data.getFullYear() + '年' + (data.getMonth() + 1) + '月' + data.getDate() + '日')
       }
     },
     hideCalendar: function (data) {
       this.calendarShow = false
-      if (data.fromDate) {
-        alert(data.fromDate)
+      if (data) {
+        alert(data.getFullYear() + '年' + (data.getMonth() + 1) + '月' + data.getDate() + '日')
       }
     }
   }
