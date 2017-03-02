@@ -1,6 +1,6 @@
 <template>
   <div class="page-loadmore">
-    <p class="page-loadmore__desc">在列表底部, 按住 - 上拉 - 释放可以获取更多数据</p>
+    <p class="page-loadmore__desc">在列表顶端, 按住 - 下拉 - 释放可以获取更多数据</p>
     <p class="page-loadmore__desc">此例请使用手机查看</p>
     <div class="page-loadmore__wrapper" v-el:wrapper :style="{ height: wrapperHeight + 'px' }">
       <toon-loadmore :top-method="loadTop" @top-status-change="handleTopChange">
