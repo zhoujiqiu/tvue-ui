@@ -1,5 +1,5 @@
 <template>
-  <div class="picker-slot">
+  <div class="picker-slot" v-el:oneslot>
     <div class="picker-slot-wrapper" v-el:wrapper>
       <div class="picker-item" v-for="itemValue in values" :class="{'picker-selected': itemValue == value}">
         <span class="txt" :style="setStyle($index)">{{itemValue}}</span>
@@ -96,7 +96,26 @@
         var wrapper = this.$els.wrapper
         translateUtil.translateElement(wrapper, null, this.value2Translate(value))
       },
+      ajustValuesSort (translate, deltaY) {
+        if (deltaY < 0 && translate === - (this.values.length - this.visibleItemCount) * ITEM_HEIGHT) {
+          console.log('last add')
+          let temp = this.values.slice(0)
+          let e = temp.shift()
+          temp.push(e)
+          this.values = temp
+        } else if (deltaY > 0 && translate === 0) {
+          console.log('first add')
+          let temp = this.values.concat()
+          let e = temp.pop()
+          temp.unshift(e)
+          this.values = temp
+        }
+      },
       initEvents () {
+        var frameRange = {
+          top: this.$els.oneslot.getBoundingClientRect().top + Math.round(ITEM_HEIGHT / 2),
+          bottom: this.$els.oneslot.getBoundingClientRect().bottom -  Math.round(ITEM_HEIGHT / 2)
+        }
         var el = this.$els.wrapper
         var dragState = {}
 
@@ -122,11 +141,18 @@
 
             dragState.left = event.pageX
             dragState.top = event.pageY
+            if (dragState.top < frameRange.top || dragState.top > frameRange.bottom) {
+              return
+            }
 
             var deltaY = dragState.top - dragState.startTop
+            /*if (Math.abs(deltaY) > (ITEM_HEIGHT * (this.visibleItemCount - 1))) {
+              return
+            }*/
             var translate = dragState.startTranslateTop + deltaY
 
             translateUtil.translateElement(el, null, translate)
+            // this.ajustValuesSort(translate, deltaY)
 
             velocityTranslate = translate - prevTranslate || translate
 
