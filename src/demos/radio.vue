@@ -119,7 +119,7 @@ export default {
     padding:10px;
   }
   .toonui-about{
-    padding:20px 0;
+    padding:20px;
     h3{
       font-size:20px;
       font-weight:700;

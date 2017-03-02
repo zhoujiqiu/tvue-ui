@@ -50,7 +50,7 @@ export default {
 </script>
 <style lang="less">
   .toonui-about{
-    padding:20px 0;
+    padding:20px;
     h3{
       font-size:20px;
       font-weight:700;
