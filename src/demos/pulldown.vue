@@ -7,6 +7,11 @@
         <ul class="page-loadmore__list">
           <li v-for="item in list" class="page-loadmore__listitem">{{ item }}</li>
         </ul>
+        <div slot="top" class="toon-loadmore__top">
+          <span v-show="topStatus === 'loading'">
+            <div>加载中...</div>
+          </span>
+        </div>
       </toon-loadmore>
     </div>
   </div>

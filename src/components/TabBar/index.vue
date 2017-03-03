@@ -1,7 +1,7 @@
 <template>
 <div class="tab-container">
-  <div class="tn-tabbar is-fixed">
-  <a class="tn-tab-item" v-for="item in tabs.tabList" :class="customClass" @click="tabChange($index)">
+  <div class="tn-tabbar">
+  <a class="tn-tab-item" v-for="item in tabs.tabList"  @click="tabChange($index)">
     <span class="tn-tab-item-tit" :class="{selected:tabs.isSelect==$index}">{{item}}</span>
   </a> 
   </div>
@@ -18,10 +18,10 @@ module.exports = {
   },
   props: {
     tabs: {
-      fixed: {
-        type: Boolean,
-        default: false
-      },
+      // fixed: {
+      //   type: Boolean,
+      //   default: false
+      // },
       isSelect: '',
       tabList: Array,
       isSelectCon: Array

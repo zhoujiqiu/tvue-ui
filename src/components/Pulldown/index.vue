@@ -83,7 +83,7 @@
       },
       topLoadingText: {
         type: String,
-        default: ''
+        default: '加载中111...'
       },
       topDistance: {
         type: Number,

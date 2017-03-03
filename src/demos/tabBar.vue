@@ -13,7 +13,7 @@ export default {
   data () {
     return {
       tabs:{
-        fixed: false, // 默认不传是false,true是固底
+        // fixed: false, // 默认不传是false,true是固底
         isSelect: 0, // 第几个选中，默认不传0开始计
         isSelectCon: ['我初始化的年度内容', '我初始化的月度内容', '我初始化的季度内容'], // 选中的内容数组，无内容为空
         tabList: ['年度', '月度', '季度'] // tab的title值数组，默认无值

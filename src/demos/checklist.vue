@@ -11,17 +11,11 @@
       title="第二个复选框列表"
       :options="options2">
     </t-checklist>
-    <!-- <t-checklist
-      class="page-part"
-      title="最多选两个"
-      :max="2"
-      :options="options3">
-    </t-checklist> -->
     <t-checklist
       align="right"
       class="page-part"
       title="右对齐"
-      :options="options4">
+      :options="options3">
     </t-checklist>
   </div>
 </template>
@@ -42,9 +36,6 @@ export default {
       optionList: ['选项A1', '选项B1', '选项C1']
     }
     this.options3 = {
-      hasChecked: ['选项A2'], // 选中的值，与optionList中的value相同即为选中
-      optionList: ['选项A2', '选项B2', '选项C2', '选项D2']}
-    this.options4 = {
       hasChecked: ['选项A3'], // 选中的值，与optionList中的value相同即为选中
       optionList: ['选项A3', '选项B3', '选项C3', '选项D3']}
     this.options2 = {
@@ -75,8 +66,6 @@ export default {
       console.log('111111111', this.options1.hasChecked) // 获得选中的值
       console.log('222222222', this.options2.hasChecked)
       console.log('333333333', this.options3.hasChecked)
-      console.log('444444444', this.options4.hasChecked)
-
     }
   }
 };
