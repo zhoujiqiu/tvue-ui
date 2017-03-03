@@ -1,7 +1,7 @@
 <template>
   <div class="toast-demo">
     <div class="des">Toast Demo</div>
-    <m-button text="点击弹出 Toast" type="primary" @click="showToast1"></m-button>
+    <m-button text="点击弹出 Toafffst" type="primary" @click="showToast1"></m-button>
     <m-button text="点击弹出带有icon的 Toast" type="primary" @click="showToast2"></m-button>
     <m-button text="自定义 Toast位置" type="primary" @click="showToast3"></m-button>
   </div>
