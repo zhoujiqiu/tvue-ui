@@ -166,7 +166,7 @@
           let maxDate = this.getMonthEndDay(year, month);
           if (date > maxDate) {
             this.selfTriggered = true;
-            date = 1;
+            date = maxDate;
           }
           let hour = this.typeStr.indexOf('H') > -1 ? this.getTrueValue(values[this.typeStr.indexOf('H')]) : 0;
           let minute = this.typeStr.indexOf('m') > -1 ? this.getTrueValue(values[this.typeStr.indexOf('m')]) : 0;
