@@ -1,7 +1,7 @@
 <template>
   <div class="toonui-about">
     <h3>说明</h3>
-    <p>前端开发中，随着业务的增多，出于效率的考虑，我们对于组件化开发的需求也越来越迫切。最近公司也在推行组件化，参考了其他的一些组件库的思路，开发了一套基于vue1.X的UI基础组件库。</p>
+    <p>前端开发中，随着业务的增多，出于效率的考虑，我们对于组件化开发的需求也越来越迫切。最近公司也在推行组件化，参考了element等其他的一些组件库的思路，开发了一套基于vue1.X的UI基础组件库。</p>
   </div>
   <div class="toonui-about">
     <h3>快速开始</h3>
@@ -14,13 +14,13 @@
     <div class="code-view">
       <code>
         <em>// 引入组件</em>
-        <span>import Dialog from 'toon-ui/lib/components/dialog'</span>
+        <span>import Toast from 'toon-ui/lib/components/toast'</span>
       </code>
     </div>
   </div>
   <div class="toonui-about">
     <h3>实例</h3>
-    <p><a v-link="{path:'/demolist'}">点击查看</a> 具体实例和使用方法</p>
+    <p><a v-link="{path:'/demolist'}">点击查看DEMO实例</a></p>
   </div>
   <!-- <div>
     <group title="index">

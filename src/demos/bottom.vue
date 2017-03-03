@@ -2,8 +2,8 @@
   <div>
     <div class="m-footer">
       <a v-link="{path:'/'}">首页</a>
-      <a v-link="{path:'/demolist'}" >演示</a>
-      <a href="https://github.com/zhoujiqiu/toon-ui" target="_blank">Github</a>
+      <a v-link="{path:'/demolist'}" >DEMO演示</a>
+      <a href="https://zhoujiqiu.github.io/gitbook/" target="_blank">使用文档</a>
     </div>
   </div>
 </template>
