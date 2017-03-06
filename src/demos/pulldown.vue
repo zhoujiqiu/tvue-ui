@@ -1,17 +1,17 @@
 <template>
   <div class="page-loadmore">
-    <p class="page-loadmore__desc">在列表顶端, 按住 - 下拉 - 释放可以获取更多数据</p>
+    <p class="page-loadmore__desc">在列表底部, 按住 - 上拉 - 释放可以获取更多数据</p>
     <p class="page-loadmore__desc">此例请使用手机查看</p>
     <div class="page-loadmore__wrapper" v-el:wrapper :style="{ height: wrapperHeight + 'px' }">
-      <toon-loadmore :top-method="loadTop" @top-status-change="handleTopChange">
+      <toon-loadmore :top-method="loadTop" :top-status.sync="topStatus">
         <ul class="page-loadmore__list">
           <li v-for="item in list" class="page-loadmore__listitem">{{ item }}</li>
         </ul>
-        <div slot="top" class="toon-loadmore__top">
+        <!-- <div slot="top" class="toon-loadmore__top">
           <span v-show="topStatus === 'loading'">
             <div>加载中...</div>
           </span>
-        </div>
+        </div> -->
       </toon-loadmore>
     </div>
   </div>
@@ -68,21 +68,33 @@
     data() {
       return {
         list: [],
-        // allLoaded: false,
+        allLoaded: false,
         topStatus: '',
         wrapperHeight: 0
       };
     },
 
     methods: {
-      loadTop() {
+      loadTop(id) {
         setTimeout(() => {
           let firstValue = this.list[0];
           for (let i = 1; i <= 10; i++) {
             this.list.unshift(firstValue - i);
           }
-          this.$refs.loadmore.onTopLoaded();
+          this.$broadcast('onTopLoaded', id);
+          // this.$refs.loadmore.onTopLoaded();
         }, 1500);
+        // setTimeout(() => {
+        //   let lastValue = this.list[this.list.length - 1];
+        //   if (lastValue < 40) {
+        //     for (let i = 1; i <= 10; i++) {
+        //       this.list.push(lastValue + i);
+        //     }
+        //   } else {
+        //     this.allLoaded = true;
+        //   }
+        //   this.$broadcast('onBottomLoaded', id);
+        // }, 1500);
       }
     },
 
