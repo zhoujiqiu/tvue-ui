@@ -1,6 +1,6 @@
 <template>
   <div>
-    <group title="demo list">
+    <group title="DEMO实例清单">
       <div class="demolist">
         <cell url="/demo/toast" title="Toast">
           <span slot="center">简短的消息提示框</span>
@@ -58,26 +58,22 @@
           <i class="iconfont" slot="right-icon">&#xe93d;</i>
         </cell>
         <cell url="/demo/tcell" title="Cell">
-          <span slot="center">list组件</span>
+          <span slot="center">列表展示组件</span>
           <i class="iconfont" slot="left-icon">&#xe62d;</i>
           <i class="iconfont" slot="right-icon">&#xe93d;</i>
         </cell>
-        <cell url="/demo/search" title="Search">
+        <!-- <cell url="/demo/search" title="Search">
           <span slot="center">搜索框组件</span>
           <i class="iconfont" slot="left-icon">&#xe62d;</i>
           <i class="iconfont" slot="right-icon">&#xe93d;</i>
-        </cell>
+        </cell> -->
         <cell url="/demo/datetimePicker" title="DatetimePicker">
           <span slot="center">日期选择器</span>
           <i class="iconfont" slot="left-icon">&#xe62d;</i>
           <i class="iconfont" slot="right-icon">&#xe93d;</i>
         </cell>
         <cell url="/demo/pullup" title="pullup">
-          <span slot="center">加载更多</span>
-          <i class="iconfont" slot="left-icon">&#xe62d;</i>
-          <i class="iconfont" slot="right-icon">&#xe93d;</i>
-        </cell>
-        <cell url="/demo/tabBar" title="tabBar">
+          <span slot="center">上拉加载更多</span>
           <i class="iconfont" slot="left-icon">&#xe62d;</i>
           <i class="iconfont" slot="right-icon">&#xe93d;</i>
         </cell>

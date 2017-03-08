@@ -12,7 +12,7 @@
             :value="option.value || option">
             <span></span>
         </span>
-        <span class="m-radio-label" v-text="option.label || option"></span>
+        <span class="m-radio-label" :class="{'m-radio-label-disabled': option.disabled,'m-radio-label-in': option.value === value}" v-text="option.label || option"></span>
       </label>
     </li>
   </ul>
@@ -48,13 +48,6 @@ export default {
     }
   },
   methods: {
-    test (option) {
-      // if (!option.disabled) {
-      //   console.log(this.value)
-      // } else {
-      //   alert('已经禁用')
-      // }
-    }
   }
 }
 </script>
@@ -64,8 +57,18 @@ export default {
   background: #fff;
   padding-left:15px;
   li{
-    border-bottom: 1px solid #e4e4e4;
-    height: 44px;    
+    height: 44px;
+    position: relative;
+    &:before{
+        content: '';
+        position:absolute;
+        z-index:2;
+        left:0;
+        bottom:0;
+        width:100%;
+        height:1px;
+        background-image: linear-gradient(0deg, #e4e4e4 50%, transparent 50%);
+    }
     label{
       display: block;
       
@@ -87,8 +90,14 @@ export default {
   }
   &-label{
     float: left;
-    font-size:17px;
+    font-size:18px;
     line-height: 44px;    
+  }
+  &-label-in{
+    color:#3395ff;   
+  }
+  &-label-disabled{
+    color:#999;
   }
 }
 .is-right{

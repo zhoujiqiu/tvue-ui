@@ -51,21 +51,14 @@ export default {
     color: #fff;
     height: 44px; 
     line-height: 44px;   
-    font-size: 17px;    
+    font-size: 16px;    
   }
-  &--blue{
-    background-color: #3395ff;
-    color: #fff;
-    height: 39px;
-    line-height: 39px;   
-    font-size: 17px; 
-  }
-  &--red{
+  &--refuse{
     background-color: #FF5A5F;
     color: #fff;
-    height: 39px;
-    line-height: 39px;    
-    font-size: 17px;  
+    height: 44px;
+    line-height: 44px;    
+    font-size: 16px;  
   }
   &--plain--default{
     border-radius: 22px;
@@ -92,6 +85,8 @@ export default {
   }
 }
 .small {
-  font-size: 16.5px;
+  font-size: 16px;
+  height: 39px;
+  line-height: 39px; 
 }
 </style>

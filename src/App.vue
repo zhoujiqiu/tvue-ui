@@ -27,14 +27,17 @@ export default {
 @import "styles/main.css";
 h1{
   text-align: center;
-  padding:20px 0;
+  padding:50px 0;
   margin-bottom:10px;
   background: #fff;
-  font-size:36px;
-  color:#59B6EF;
+  font-size:40px;
+  color:#fff;
+  background: #59B6EF;
+  border-bottom:1px solid #dddee3;
+  text-shadow:0 1px 3px rgba(0,0,0,0.3);
   span{
     display:block;
-    font-size:16px;
+    font-size:18px;
   }
 }
 #app {

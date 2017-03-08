@@ -13,7 +13,7 @@
     </div>
     <div class="code-view">
       <code>
-        <em>// 引入组件</em>
+        <em>// 引入toast组件（按需引入）</em>
         <span>import Toast from 'toon-ui/lib/components/toast'</span>
       </code>
     </div>

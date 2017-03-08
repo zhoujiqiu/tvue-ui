@@ -99,10 +99,19 @@ export default {
 
       @descendent label {
         display: block;
-        padding:5px 0 10px 10px;
-        height:34px;
-        margin-bottom:5px;
-        border-bottom:1px solid #EEEDD3;
+        padding:10px 0 10px 0;
+        margin-left:10px;
+        position: relative;
+        &:before{
+            content: '';
+            position:absolute;
+            z-index:2;
+            left:0;
+            bottom:0;
+            width:100%;
+            height:1px;
+            background-image: linear-gradient(0deg, #e4e4e4 50%, transparent 50%);
+        }
       }
 
       @descendent title {
@@ -165,7 +174,7 @@ export default {
           border-left: 0;
           border-top: 0;
           content: " ";
-          position: absolute 3px * * 6px;
+          position: absolute 4px * * 7px;
           size: 4px 8px;
           transform: rotate(45deg);
           transition: transform .2s;

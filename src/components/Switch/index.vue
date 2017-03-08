@@ -1,8 +1,8 @@
 <template>
-  <div class="mint-switch" @click="value = !value">
-    <input class="mint-switch-input" type="checkbox" v-model="value">
-    <span class="mint-switch-core"></span>
-    <div class="mint-switch-label"><slot></slot></div>
+  <div class="toon-switch" @click="value = !value">
+    <input class="toon-switch-input" type="checkbox" v-model="value">
+    <span class="toon-switch-core"></span>
+    <div class="toon-switch-label"><slot></slot></div>
   </div>
 </template>
 
@@ -27,7 +27,7 @@ export default {
 </script>
 
 <style>
-  .mint-switch {
+  .toon-switch {
 
       display: -webkit-box;
 
@@ -44,19 +44,19 @@ export default {
       position: relative
   }
 
-  .mint-switch-label {
+  .toon-switch-label {
 
       margin-left: 10px;
 
       display: inline-block
   }
 
-  .mint-switch-label:empty {
+  .toon-switch-label:empty {
 
       margin-left: 0
   }
 
-  .mint-switch-core {
+  .toon-switch-core {
 
       display: inline-block;
 
@@ -75,7 +75,7 @@ export default {
       background: #d9d9d9
   }
 
-  .mint-switch-core::after, .mint-switch-core::before {
+  .toon-switch-core::after, .toon-switch-core::before {
 
       content: " ";
 
@@ -96,7 +96,7 @@ export default {
       border-radius: 15px
   }
 
-  .mint-switch-core::after {
+  .toon-switch-core::after {
 
       width: 30px;
 
@@ -107,7 +107,7 @@ export default {
       box-shadow: 0 1px 3px rgba(0, 0, 0, .4)
   }
 
-  .mint-switch-core::before {
+  .toon-switch-core::before {
 
       width: 50px;
 
@@ -116,26 +116,26 @@ export default {
       background-color: #fdfdfd
   }
 
-  .mint-switch-input {
+  .toon-switch-input {
 
       display: none
   }
 
-  .mint-switch-input:checked + .mint-switch-core {
+  .toon-switch-input:checked + .toon-switch-core {
 
       border-color: #26a2ff;
 
       background-color: #26a2ff
   }
 
-  .mint-switch-input:checked + .mint-switch-core::before {
+  .toon-switch-input:checked + .toon-switch-core::before {
 
       -webkit-transform: scale(0);
 
               transform: scale(0)
   }
 
-  .mint-switch-input:checked + .mint-switch-core::after {
+  .toon-switch-input:checked + .toon-switch-core::after {
 
       -webkit-transform: translateX(20px);
 

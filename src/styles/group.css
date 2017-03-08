@@ -3,5 +3,6 @@
 .m-group__title {
   padding-left: var(--group-title-left);
   font-size: var(--group-font-size);
-  color: var(--group-title-color);
+  color: #333;
+  padding-bottom:10px;
 }
