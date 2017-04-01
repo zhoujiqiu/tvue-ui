@@ -1,15 +1,12 @@
 <template>
   <div class="tabBar-demo">
     <div class="des">tabbar</div>
-    <t-tabbar v-bind:tabs='tabs'></t-tabbar> 
+    <t-tabbar v-bind:tabs='tabs' v-on:tabchange="tabChange"></t-tabbar> 
   </div>
 </template>
 <script>
 import TTabbar from '../components/Tabbar/index.vue'
 export default {
-  ready: function () {
-    // this.tabs.isSelectCon.splice(0, 1, 'ready') // 只是其中的一个方法
-  },
   data () {
     return {
       tabs:{
@@ -23,13 +20,11 @@ export default {
   components: {
     TTabbar
   },
-  events: {
+  methods: {
     tabChange: function (index) {
       let j = parseInt(index) // 注意，需转化为整数
       this.tabs.isSelectCon.splice(j, 1, '我可以是post请求回来的数据哟'+j) // 只是其中的一个方法
     }
-  },
-  methods: {
   }
 }
 </script>

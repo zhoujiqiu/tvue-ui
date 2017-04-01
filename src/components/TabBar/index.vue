@@ -1,60 +1,44 @@
 <template>
 <div class="tab-container">
   <div class="tn-tabbar">
-  <a class="tn-tab-item" v-for="item in tabs.tabList"  @click="tabChange($index)">
-    <span class="tn-tab-item-tit" :class="{selected:tabs.isSelect==$index}">{{item}}</span>
+  <a class="tn-tab-item" v-for="(item,index) in tabs.tabList"  v-on:click="tabChange(index)">
+    <span class="tn-tab-item-tit" :class="{selected:tabs.isSelect==index}">{{item}}</span>
   </a> 
   </div>
   <div class="tn-tab-container-item">
-    <div class="tn-cell" v-for="item in tabs.isSelectCon">
-     <div v-if='tabs.isSelect==$index'>{{{item}}}</div>
+    <div class="tn-cell" v-for="(item,index) in tabs.isSelectCon">
+     <div v-if='tabs.isSelect==index' v-html="item"></div>
     </div>
   </div>
 </div>
 </template>
 <script>
 export default {
-  ready: function () {
-  },
   props: {
     tabs: {
-      // fixed: {
-      //   type: Boolean,
-      //   default: false
-      // },
       isSelect: '',
       tabList: Array,
       isSelectCon: Array
     }
   },
-  data () {
-    return {
-      // tabList: this.tabs.tabList,
-      // isSelectCon: this.tabs.isSelectCon,
-      // isSelect: this.tabs.isSelect,
-      // fixed: this.tabs.fixed,
-      // mycontent: '',
-      // isShow: true
-    }
-  },
   computed: {
     customClass() {
-    let classes = [];
-    switch (this.tabs.fixed) {
-      case false:
-        classes = [];
-        break;
-      default:
-        classes.push('is-fixed');
-    }
-    classes.push(this.className);
-    return classes.join(' ');
+      let classes = [];
+      switch (this.tabs.fixed) {
+        case false:
+          classes = [];
+          break;
+        default:
+          classes.push('is-fixed');
+      }
+      classes.push(this.className);
+      return classes.join(' ');
     }
   },
   methods: {
-    tabChange(index) {
+    tabChange: function (index) {
+      this.$emit('tabchange', index)
       this.tabs.isSelect = index
-      this.$dispatch('tabChange', index)
     }
   }
 }

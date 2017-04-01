@@ -22,7 +22,7 @@ module.exports = {
       instance.text = '';
       instance.spinnerType = 'snake';
     }
-    instance.$appendTo(document.body);
+    document.body.appendChild(instance.$el);
     if (timer) {
       clearTimeout(timer);
     }

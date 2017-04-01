@@ -4,7 +4,7 @@
         <slot></slot>
       </div>
       <div class="picker-collection">
-        <picker-slot v-for="slot in slots" :values="slot.values || []" :value.sync="values[slot.valueIndex]" :suffix="slot.suffix">
+        <picker-slot v-for="slot in slots" :values="slot.values || []" :value.sync="values[slot.valueIndex]" :suffix="slot.suffix" :key="slot.id">
         </picker-slot>
       </div>
     </div>

@@ -17,7 +17,7 @@
   // import 'raf.js'
   const ITEM_HEIGHT = 30;
   export default {
-    ready: function () {
+    mounted: function () {
       if (!this.divider) {
         this.initEvents();
         this.doOnValueChange();

@@ -27,7 +27,7 @@ export default {
   methods: {
     goUrl () {
       if (this.url) {
-        this.$router.go(this.url)
+        this.$router.push(this.url)
       }
     }
   }

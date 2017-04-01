@@ -2,77 +2,77 @@
   <div>
     <group title="DEMO实例清单">
       <div class="demolist">
-        <cell url="/demo/toast" title="Toast">
+        <cell url="/demos/toast" title="Toast">
           <span slot="center">简短的消息提示框</span>
           <i class="iconfont" slot="left-icon">&#xe62d;</i>
           <i class="iconfont" slot="right-icon">&#xe93d;</i>
         </cell>
-        <cell url="/demo/dialog" title="Dialog">
+        <cell url="/demos/dialog" title="Dialog">
           <span slot="center">弹出式提示框</span>
           <i class="iconfont" slot="left-icon">&#xe62d;</i>
           <i class="iconfont" slot="right-icon">&#xe93d;</i>
         </cell>
-        <cell url="/demo/loading" title="Loading">
+        <cell url="/demos/loading" title="Loading">
           <span slot="center">加载提示框</span>
           <i class="iconfont" slot="left-icon">&#xe62d;</i>
           <i class="iconfont" slot="right-icon">&#xe93d;</i>
         </cell>
-        <cell url="/demo/tab" title="tabBar">
+        <cell url="/demos/tab" title="tabBar">
           <span slot="center">选项卡</span>
           <i class="iconfont" slot="left-icon">&#xe62d;</i>
           <i class="iconfont" slot="right-icon">&#xe93d;</i>
         </cell>
-        <cell url="/demo/pulldown" title="pulldown">
+        <cell url="/demos/pulldown" title="pulldown">
           <span slot="center">下拉刷新</span>
           <i class="iconfont" slot="left-icon">&#xe62d;</i>
           <i class="iconfont" slot="right-icon">&#xe93d;</i>
         </cell>
-        <cell url="/demo/lazyload" title="Lazyload">
+        <cell url="/demos/lazyload" title="Lazyload">
           <span slot="center">图片懒加载</span>
           <i class="iconfont" slot="left-icon">&#xe62d;</i>
           <i class="iconfont" slot="right-icon">&#xe93d;</i>
         </cell>
-        <cell url="/demo/button" title="Button">
+        <cell url="/demos/button" title="Button">
           <span slot="center">按钮组件</span>
           <i class="iconfont" slot="left-icon">&#xe62d;</i>
           <i class="iconfont" slot="right-icon">&#xe93d;</i>
         </cell>
-        <cell url="/demo/field" title="Field">
+        <cell url="/demos/field" title="Field">
           <span slot="center">表单编辑器</span>
           <i class="iconfont" slot="left-icon">&#xe62d;</i>
           <i class="iconfont" slot="right-icon">&#xe93d;</i>
         </cell>
-        <cell url="/demo/radio" title="radio">
+        <cell url="/demos/radio" title="radio">
           <span slot="center">单选框</span>
           <i class="iconfont" slot="left-icon">&#xe62d;</i>
           <i class="iconfont" slot="right-icon">&#xe93d;</i>
         </cell>
-        <cell url="/demo/checklist" title="checklist">
+        <cell url="/demos/checklist" title="checklist">
           <span slot="center">复选框</span>
           <i class="iconfont" slot="left-icon">&#xe62d;</i>
           <i class="iconfont" slot="right-icon">&#xe93d;</i>
         </cell>
-        <cell url="/demo/switch" title="Switch">
+        <cell url="/demos/switch" title="Switch">
           <span slot="center">开关组件</span>
           <i class="iconfont" slot="left-icon">&#xe62d;</i>
           <i class="iconfont" slot="right-icon">&#xe93d;</i>
         </cell>
-        <cell url="/demo/tcell" title="Cell">
+        <cell url="/demos/tcell" title="Cell">
           <span slot="center">列表展示组件</span>
           <i class="iconfont" slot="left-icon">&#xe62d;</i>
           <i class="iconfont" slot="right-icon">&#xe93d;</i>
         </cell>
-        <!-- <cell url="/demo/search" title="Search">
+        <!-- <cell url="/demos/search" title="Search">
           <span slot="center">搜索框组件</span>
           <i class="iconfont" slot="left-icon">&#xe62d;</i>
           <i class="iconfont" slot="right-icon">&#xe93d;</i>
         </cell> -->
-        <cell url="/demo/datetimePicker" title="DatetimePicker">
+        <cell url="/demos/datetimePicker" title="DatetimePicker">
           <span slot="center">日期选择器</span>
           <i class="iconfont" slot="left-icon">&#xe62d;</i>
           <i class="iconfont" slot="right-icon">&#xe93d;</i>
         </cell>
-        <cell url="/demo/pullup" title="pullup">
+        <cell url="/demos/pullup" title="pullup">
           <span slot="center">上拉加载更多</span>
           <i class="iconfont" slot="left-icon">&#xe62d;</i>
           <i class="iconfont" slot="right-icon">&#xe93d;</i>

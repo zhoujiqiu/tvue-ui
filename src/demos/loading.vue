@@ -1,8 +1,8 @@
 <template>
   <div class="dialog-demo">
     <div class="des">loading</div>
-    <m-button text="点击弹出 Loading" type="primary" @click="loading"></m-button>
-    <m-button text="点击弹出带文字的 Loading" type="primary" @click="textLoading"></m-button>
+    <m-button text="点击弹出 Loading" type="primary" @click.native="loading"></m-button>
+    <m-button text="点击弹出带文字的 Loading" type="primary" @click.native="textLoading"></m-button>
     
   </div>
 </template>

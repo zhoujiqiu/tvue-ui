@@ -1,4 +1,5 @@
 <template>
+  <div>
     <div class="cover" @click="close"></div>
     <div class="timepicker">
       <div class="timepicker_info">
@@ -18,10 +19,11 @@
         </ul>
       </div>
     </div>
+  </div>
 </template>
 <script>
   export default {
-    ready: function () {
+    mounted: function () {
       this.init()
       if (this.$parent.pData && this.$parent.pData.bpPeriodBegin) {
         this.timpSpan.fromUtcTime = this.$parent.pData.bpPeriodBegin

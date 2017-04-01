@@ -2,23 +2,25 @@
   <x-cell
     class="toon-field"
     :title="label"
-    v-clickoutside="active = false"
+    v-clickoutside="doCloseActive"
     :class="[{
       'is-textarea': type === 'textarea',
       'is-nolabel': !label
     }]">
     <textarea
-      v-el:textarea
+      @change="$emit('change', currentValue)"
+      ref="textarea"
       class="toon-field-core"
       :placeholder="placeholder"
       v-if="type === 'textarea'"
       :rows="rows"
       :disabled="disabled"
       :readonly="readonly"
-      v-model="value">
+      v-model="currentValue">
     </textarea>
     <input
-      v-el:input
+      @change="$emit('change', currentValue)"
+      ref="input"
       class="toon-field-core"
       :placeholder="placeholder"
       :number="type === 'number'"
@@ -27,16 +29,17 @@
       @focus="active = true"
       :disabled="disabled"
       :readonly="readonly"
-      v-model="value">
+      :value="currentValue"
+      @input="handleInput">
     <div
       @click="handleClear"
-      v-if="!disableClear"
       class="toon-field-clear"
-      v-show="value && type !== 'textarea' && active">
-      <i class="iconfont iconfont-field-error"></i>
+      v-if="!disableClear"
+      v-show="currentValue && type !== 'textarea' && active">
+      <i class="mintui mintui-field-error"></i>
     </div>
     <span class="toon-field-state" v-if="state" :class="['is-' + state]">
-      <i class="iconfont" :class="['iconfont-field-' + state]"></i>
+      <i class="mintui" :class="['mintui-field-' + state]"></i>
     </span>
     <div class="toon-field-other">
       <slot></slot>
@@ -51,7 +54,7 @@ import XCell from '../Tcell/index.vue';
  * @desc 编辑器，依赖 cell
  * @module components/field
  *
- * @param {string} [type=text] - field 类型，接受 text, number, email, url, tel, date, datetime, password, textarea 等
+ * @param {string} [type=text] - field 类型，接受 text, textarea 等
  * @param {string} [label] - 标签
  * @param {string} [rows] - textarea 的 rows
  * @param {string} [placeholder] - placeholder
@@ -60,24 +63,19 @@ import XCell from '../Tcell/index.vue';
  * @param {string} [state] - 表单校验状态样式，接受 error, warning, success
  *
  * @example
- * <mt-field label="用户名"></mt-field>
- * <mt-field label="密码" placeholder="请输入密码"></mt-field>
- * <mt-field label="自我介绍" placeholder="自我介绍" type="textarea" rows="4"></mt-field>
- * <mt-field label="邮箱" placeholder="成功状态" state="success"></mt-field>
+ * <mt-field v-model="value" label="用户名"></mt-field>
+ * <mt-field v-model="value" label="密码" placeholder="请输入密码"></mt-field>
+ * <mt-field v-model="value" label="自我介绍" placeholder="自我介绍" type="textarea" rows="4"></mt-field>
+ * <mt-field v-model="value" label="邮箱" placeholder="成功状态" state="success"></mt-field>
  */
 export default {
   name: 'mt-field',
-
   data() {
     return {
-      active: false
+      active: false,
+      currentValue: this.value
     };
   },
-
-  // directives: { Clickoutside },
-
-  components: { XCell },
-
   props: {
     type: {
       type: String,
@@ -96,20 +94,31 @@ export default {
     value: {},
     attr: Object
   },
-
+  components: { XCell },
   methods: {
+    doCloseActive() {
+      this.active = false;
+    },
+    handleInput(evt) {
+      this.currentValue = evt.target.value;
+    },
     handleClear() {
       if (this.disabled || this.readonly) return;
-      this.value = '';
+      this.currentValue = '';
     }
   },
-
   watch: {
+    value(val) {
+      this.currentValue = val;
+    },
+    currentValue(val) {
+      this.$emit('input', val);
+    },
     attr: {
       immediate: true,
       handler(attrs) {
         this.$nextTick(() => {
-          const target = [this.$els.input, this.$els.textarea];
+          const target = [this.$refs.input, this.$refs.textarea];
           target.forEach(el => {
             if (!el || !attrs) return;
             Object.keys(attrs).map(name => el.setAttribute(name, attrs[name]));

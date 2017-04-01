@@ -1,10 +1,12 @@
 <template>
+  <div>
     <div class="cover" @click="close">
     </div>
     <picker :slots="dateSlots" @change="onChange" v-ref:picker>
       <button class="cancel" @click="close">取消</button>
       <button class="ok" @click="confirm">确定</button>
     </picker>
+  </div>
 </template>
 <script>
   import picker from './index-picker'

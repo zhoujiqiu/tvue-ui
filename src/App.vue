@@ -1,14 +1,16 @@
 <template>
-  <div id="app">
+  <div>
     <h1>
         ToonUi
-        <span>基于vue1.x的移动端组件库</span>
+        <span>基于vue的移动端组件库</span>
     </h1>
     
     <m-bottom></m-bottom>
     
     <div class="container">
-      <router-view></router-view>
+      <div  id="app">
+        <router-view></router-view>
+      </div>
     </div>
   </div>
 </template>

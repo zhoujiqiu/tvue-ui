@@ -53,9 +53,6 @@
 
 <script type="text/babel">
   export default {
-    ready: function () {
-      window.alert('123')
-    },
     props: {
       message: String,
       className: {

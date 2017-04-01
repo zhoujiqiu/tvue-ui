@@ -1,7 +1,7 @@
 {
   "name": "toon-ui",
-  "version": "1.0.0",
-  "description": "Vue Toon UI library.",
+  "version": "1.2.0",
+  "description": "Vue2 Toon UI library.",
   "author": "zhoujiqiu <zhoujiqiu@163.com>",
   "scripts": {
     "dev": "node build/dev-server.js",
@@ -13,8 +13,7 @@
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs"
   },
   "dependencies": {
-    "vue": "^1.0.28",
-    "vue-loader": "^8.2.1"
+    "babel-runtime": "^6.0.0"
   },
   "repository": {
     "type": "git",
@@ -87,9 +86,15 @@
     "sinon-chai": "^2.8.0",
     "url-loader": "^0.5.7",
     "validator": "^6.1.0",
-    "vue-loader": "^8.7.0",
-    "vue-router": "^0.7.5",
-    "vue-style-loader": "^1.0.0",
+    "vue": "^2.2.1",
+    "vue-hot-reload-api": "^1.2.0",
+    "vue-html-loader": "^1.2.4",
+    "vue-loader": "^11.1.4",
+    "vue-resource": "^1.2.1",
+    "vue-router": "^2.3.0",
+    "vue-style-loader": "^2.0.3",
+    "vue-template-compiler": "^2.2.4",
+    "vuex": "^2.2.1",
     "webpack": "^1.13.2",
     "webpack-dev-middleware": "^1.8.3",
     "webpack-hot-middleware": "^2.12.2",

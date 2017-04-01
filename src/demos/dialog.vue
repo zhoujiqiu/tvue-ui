@@ -1,9 +1,9 @@
 <template>
   <div class="dialog-demo">
     <div class="des">Dialog</div>
-    <m-button text="点击弹出 alert提示框" type="primary" @click="showAlert"></m-button>
-    <m-button text="点击弹出 confirm提示框" type="primary" @click="showConfirm"></m-button>
-    <m-button text="点击弹出 prompt提示框" type="primary" @click="showPrompt"></m-button>
+    <m-button text="点击弹出 alert提示框" type="primary" @click.native="showAlert"></m-button>
+    <m-button text="点击弹出 confirm提示框" type="primary" @click.native="showConfirm"></m-button>
+    <m-button text="点击弹出 prompt提示框" type="primary" @click.native="showPrompt"></m-button>
     
   </div>
 </template>

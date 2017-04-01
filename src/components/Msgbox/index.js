@@ -2,12 +2,14 @@ var CONFIRM_TEXT = '确定';
 var CANCEL_TEXT = '取消';
 
 var defaults = {
-  title: '',
+  title: '提示',
   message: '',
   type: '',
-  inputType: 'text',
   showInput: false,
+  showClose: true,
+  modalFade: false,
   lockScroll: false,
+  closeOnClickModal: true,
   inputValue: null,
   inputPlaceholder: '',
   inputPattern: null,
@@ -90,7 +92,7 @@ var showNextMsg = function() {
     initInstance();
   }
 
-  if (!instance.visible || instance.closeTimer) {
+  if (!instance.value || instance.closeTimer) {
     if (msgQueue.length > 0) {
       currentMsg = msgQueue.shift();
 
@@ -103,10 +105,15 @@ var showNextMsg = function() {
       if (options.callback === undefined) {
         instance.callback = defaultCallback;
       }
-      instance.$appendTo(document.body);
+      ['modal', 'showClose', 'closeOnClickModal', 'closeOnPressEscape'].forEach(prop => {
+        if (instance[prop] === undefined) {
+          instance[prop] = true;
+        }
+      });
+      document.body.appendChild(instance.$el);
 
       Vue.nextTick(() => {
-        instance.visible = true;
+        instance.value = true;
       });
     }
   }
@@ -128,7 +135,7 @@ var MessageBox = function(options, callback) {
   }
 
   if (typeof Promise !== 'undefined') {
-    return new Promise(function (resolve, reject) {
+    return new Promise(function(resolve, reject) { // eslint-disable-line
       msgQueue.push({
         options: merge({}, defaults, MessageBox.defaults || {}, options),
         callback: callback,
@@ -160,7 +167,9 @@ MessageBox.alert = function(message, title, options) {
   return MessageBox(merge({
     title: title,
     message: message,
-    $type: 'alert'
+    $type: 'alert',
+    closeOnPressEscape: false,
+    closeOnClickModal: false
   }, options));
 };
 
@@ -192,7 +201,8 @@ MessageBox.prompt = function(message, title, options) {
 };
 
 MessageBox.close = function() {
-  instance.visible = false;
+  if (!instance) return;
+  instance.value = false;
   msgQueue = [];
   currentMsg = null;
 };
