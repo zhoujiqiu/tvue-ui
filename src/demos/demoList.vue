@@ -22,8 +22,8 @@
           <i class="iconfont" slot="left-icon">&#xe62d;</i>
           <i class="iconfont" slot="right-icon">&#xe93d;</i>
         </cell>
-        <cell url="/demos/pulldown" title="pulldown">
-          <span slot="center">下拉刷新</span>
+        <cell url="/demos/scroller" title="Scroller">
+          <span slot="center">下拉刷新&加载更多</span>
           <i class="iconfont" slot="left-icon">&#xe62d;</i>
           <i class="iconfont" slot="right-icon">&#xe93d;</i>
         </cell>
@@ -62,21 +62,16 @@
           <i class="iconfont" slot="left-icon">&#xe62d;</i>
           <i class="iconfont" slot="right-icon">&#xe93d;</i>
         </cell>
-        <!-- <cell url="/demos/search" title="Search">
-          <span slot="center">搜索框组件</span>
-          <i class="iconfont" slot="left-icon">&#xe62d;</i>
-          <i class="iconfont" slot="right-icon">&#xe93d;</i>
-        </cell> -->
-        <cell url="/demos/datetimePicker" title="DatetimePicker">
+        <!-- <cell url="/demos/datetimePicker" title="DatetimePicker">
           <span slot="center">日期选择器</span>
           <i class="iconfont" slot="left-icon">&#xe62d;</i>
           <i class="iconfont" slot="right-icon">&#xe93d;</i>
-        </cell>
-        <cell url="/demos/pullup" title="pullup">
+        </cell> -->
+        <!-- <cell url="/demos/pullup" title="pullup">
           <span slot="center">上拉加载更多</span>
           <i class="iconfont" slot="left-icon">&#xe62d;</i>
           <i class="iconfont" slot="right-icon">&#xe93d;</i>
-        </cell>
+        </cell> -->
       </div>
     </group>
   </div>

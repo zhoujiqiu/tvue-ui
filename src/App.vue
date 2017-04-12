@@ -51,7 +51,6 @@ h1{
   padding-bottom: 120px;
 }
 .container{
-  max-width:750px;
   margin: 0 auto;
   overflow-x:hidden;
 }
