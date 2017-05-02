@@ -1,9 +1,9 @@
 <template>
-  <div class="toon-switch" @click="value = !value">
-    <input class="toon-switch-input" type="checkbox" v-model="value">
+  <label class="toon-switch">
+    <input class="toon-switch-input" @change="$emit('change', currentValue)" type="checkbox" v-model="currentValue">
     <span class="toon-switch-core"></span>
     <div class="toon-switch-label"><slot></slot></div>
-  </div>
+  </label>
 </template>
 
 <script>
@@ -15,13 +15,23 @@
  * @param {slot} - 显示内容
  *
  * @example
- * <mt-switch :value.sync="value"></mt-switch>
+ * <mt-switch v-model="value"></mt-switch>
  */
 export default {
   name: 'mt-switch',
 
   props: {
     value: Boolean
+  },
+  computed: {
+    currentValue: {
+      get() {
+        return this.value;
+      },
+      set(val) {
+        this.$emit('input', val);
+      }
+    }
   }
 };
 </script>

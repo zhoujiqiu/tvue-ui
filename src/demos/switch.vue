@@ -2,13 +2,13 @@
   <div class="page-switch">
     <div class="page-title">Switch</div>
     <div class="page-part page-switch__padding">
-      <t-switch :value.sync="value1">
+      <t-switch v-model="value1" @change="handleChange">
         <label v-text="value1"></label>
       </t-switch>
     </div>
 
     <div class="page-part page-switch__padding">
-      <t-switch :value.sync="value4">
+      <t-switch v-model="value4" @change="handleChange">
         <label v-text="value4"></label>
       </t-switch>
     </div>

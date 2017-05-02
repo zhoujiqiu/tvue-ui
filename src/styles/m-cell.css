@@ -9,7 +9,7 @@
   padding: var(--cell-padding-tb) var(--cell-padding-lr);
   display: flex;
   justify-content: space-between;
-  font-size:20px;
+  font-size:16px;
   &:first-child {
     @mixin borderTop var(--color-border-cell);
   }

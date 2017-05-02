@@ -10,8 +10,8 @@ import Toast from './demos/toast.vue'
 import Dialog from './demos/dialog.vue'
 import Tab from './demos/tabbar.vue'
 import DatetimePicker from './demos/datetimePicker.vue'
-import Scroller from './demos/scroller.vue'
-import Checklist from './demos/checklist.vue'
+import InfiniteLoading from './demos/infiniteLoading.vue'
+import Checkbox from './demos/checkbox.vue'
 import Pulldown from './demos/Pulldown.vue'
 import Loading from './demos/loading.vue'
 import Radio from './demos/radio.vue'
@@ -31,8 +31,8 @@ Vue.config.silent = true
 // 配置路由规则
 const router = new VueRouter({
   routes: [
-    {path: '/', component: Index, name: 'index'},
-    {path: '/',redirect: 'index'},
+    // {path: '/', component: Index, name: 'index'},
+    {path: '/',redirect: '/demos/demolist'},
     {path: 'about', component: About, name: 'about'},
     {path: '/demos/demolist', component: DemoList, name: 'demolist'},
     {path: '/demos/button', component: Button, name: 'button'},
@@ -40,8 +40,8 @@ const router = new VueRouter({
     {path: '/demos/dialog', component: Dialog, name: 'dialog'},
     {path: '/demos/tab', component: Tab, name: 'tab'},
     {path: '/demos/datetimePicker', component: DatetimePicker, name: 'datetimePicker'},
-    {path: '/demos/scroller', component: Scroller, name: 'scroller'},
-    {path: '/demos/checklist', component: Checklist, name: 'checklist'},
+    {path: '/demos/infiniteLoading', component: InfiniteLoading, name: 'infiniteLoading'},
+    {path: '/demos/checkbox', component: Checkbox, name: 'checkbox'},
     {path: '/demos/pulldown', component: Pulldown, name: 'pulldown'},
     {path: '/demos/loading', component: Loading, name: 'loading'},
     {path: '/demos/field', component: Field, name: 'field'},

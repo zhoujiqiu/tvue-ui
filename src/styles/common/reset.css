@@ -17,7 +17,7 @@ html * {
 }
 html,
 body {
-    font-family:Arial;
+    font-family:Helvetica Neue,Helvetica,STHeiTi,Arial,sans-serif;
 }
 /* 内外边距通常让各个浏览器样式的表现位置不同 */
 body,
@@ -95,7 +95,7 @@ em,
 th,
 var {
     font-style: normal;
-    font-weight: 500;
+    font-weight: 400;
 }
 /* 去掉列表前的标识, li 会继承 */
 ol,
@@ -115,7 +115,7 @@ h4,
 h5,
 h6 {
     font-size: 100%;
-    font-weight: 500;
+    font-weight: 400;
 }
 q:before,
 q:after {

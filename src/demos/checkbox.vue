@@ -1,34 +1,34 @@
 <template>
   <div class="dialog-demo">
-    <div class="des" @click="getValue">Checklist</div>
-    <t-checklist
+    <div class="des" @click="getValue">Checkbox</div>
+    <t-checkbox
       class="page-part"
       title="复选框列表"
       :options="options1">
-    </t-checklist>
-    <t-checklist
+    </t-checkbox>
+    <t-checkbox
       class="page-part"
       title="第二个复选框列表"
       :options="options2">
-    </t-checklist>
-    <t-checklist
+    </t-checkbox>
+    <!-- <t-checkbox
       align="right"
       class="page-part"
       title="右对齐"
       :options="options3">
-    </t-checklist>
+    </t-checkbox> -->
   </div>
 </template>
 <script>
 import MButton from '../components/MButton/index.vue'
-import TChecklist from '../components/Checklist/index.vue'
+import TCheckbox from '../components/Checkbox/index.vue'
 export default {
   data() {
     return {
     };
   },
   components: {
-    TChecklist
+    TCheckbox
   },
   created() {
     this.options1 = {

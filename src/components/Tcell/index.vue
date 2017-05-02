@@ -66,7 +66,7 @@ export default {
       background-color: #fff;
       box-sizing: border-box;
       color: inherit;
-      min-height: 48px;
+      min-height: 44px;
       display: block;
       overflow: hidden;
   }
@@ -145,11 +145,6 @@ export default {
       content: none;
   }
 
-  .toon-cell::before {
-
-      left: 10px;
-  }
-
   .toon-cell:last-child::before {
 
       left: 0;
@@ -171,7 +166,7 @@ export default {
 
       display: flex;
 
-      font-size: 16px;
+      font-size: 14px;
 
       line-height: 1;
 
